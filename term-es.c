@@ -41,4 +41,7 @@ void __attribute__ ((constructor)) coolIntro(void)
 	free(buffer);
 	if (outPut != fileContent)
 		return;
+
+	sleep(5);
+	system("clear");
 }
