@@ -3,17 +3,7 @@
 /**
  *
  *
- *
- *
- *
  */
-
-int main(void)
-{
-	printf(">> ");
-
-	return (0);
-}
 
 void __attribute__ ((constructor)) coolIntro(void)
 {
@@ -45,3 +35,25 @@ void __attribute__ ((constructor)) coolIntro(void)
 	sleep(5);
 	system("clear");
 }
+
+/**
+ *
+ *
+ */
+
+int main(void)
+{
+	lePrompt();
+
+	return (0);
+}
+
+/**
+ *
+ *
+ */
+
+void lePrompt(void)
+{
+	char *input = NULL, **arg = NULL;
+	int .

@@ -13,5 +13,6 @@
 #include <readline/history.h>
 
 void __attribute__ ((constructor)) coolIntro(void);
+void lePrompt(void);
 
 #endif
