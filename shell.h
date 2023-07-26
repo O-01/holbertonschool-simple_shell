@@ -12,6 +12,6 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-ssize_t coolIntro(void);
+void __attribute__ ((constructor)) coolIntro(void);
 
 #endif
