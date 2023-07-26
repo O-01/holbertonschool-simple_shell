@@ -7,9 +7,11 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 
-
+ssize_t coolIntro(void);
 
 #endif
