@@ -13,6 +13,6 @@
 #include <readline/history.h>
 
 void __attribute__ ((constructor)) coolIntro(void);
-void lePrompt(void);
+ssize_t lePrompt(const char *, char **, size_t *);
 
 #endif
