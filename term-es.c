@@ -32,8 +32,8 @@ void __attribute__ ((constructor)) coolIntro(void)
 	if (outPut != fileContent)
 		return;
 
-/*	sleep(3);
-	system("clear");*/
+/*	sleep(3);*/
+	system("clear");
 }
 
 /**
@@ -45,8 +45,15 @@ int main(void)
 {
 	char *inPut = NULL;
 	size_t len = 0;
+	ssize_t *cmdExist = NULL;
 
-	lePrompt("Σ ≈ ", &inPut, &len);
+	while (1)
+	{
+		cmdExist = lePrompt("Σ ≈ ", &inPut, &len);
+		if (!cmdExist)
+		{
+		}
+	}
 
 	return (0);
 }
@@ -59,8 +66,9 @@ int main(void)
 ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 {
 	ssize_t gotLine = 0;
+	char cwd[BUFSIZ];
 
-	fprintf(stderr, "%s(pwd needs to be here) ≈ ", prmptStyle);
+	fprintf(stderr, "%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
 	gotLine = getline(inPut, len, stdin);
 
 	return (gotLine);
