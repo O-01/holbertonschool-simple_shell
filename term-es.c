@@ -45,12 +45,12 @@ int main(void)
 {
 	char *inPut = NULL;
 	size_t len = 0;
-/* ssize_t *cmdExist = NULL;*/
+	int status = 0;
 
-	while (1)
+	while (lePrompt("Σ ≈ ", &inPut, &len))
 	{
 /*		signal(SIGINT, signalThing);*/
-		/*cmdExist = */lePrompt("Σ ≈ ", &inPut, &len);
+		status = stat;
 	}
 
 	return (0);
