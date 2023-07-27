@@ -9,19 +9,39 @@ int main(void)
 {
 	char *inPut = NULL, *separ = NULL;
 	size_t len = 0;
-	int iter = 0;
+	pid_t launch = 0;
+	int iter = 0, status = 0;
+	char *cmdS[BUFSIZ] = {"/usr/bin/ls", "-laS", NULL, "./"};
+	char *cmdT[BUFSIZ];
 
 	while (1)
 	{
 		signal(SIGINT, signalThing);
 		lePrompt("Σ ≈ ", &inPut, &len);
 		fprintf(stdout, "%s", inPut);
+
 		for (; inPut; ++iter)
 		{
 			separ = strsep(&inPut, SPC_DELIM);
+			cmdT[iter] = separ;
 			/*fprintf(stdout, "%s\n", separ);*/
 			if (strcmp("exit", separ) == 0)
 				exit(EXIT_SUCCESS);
+			if (strcmp("ls", separ) == 0)
+			{
+				cmdS[2] = cmdT[2];
+				launch = fork();
+				if (launch < 0)
+					exit(EXIT_FAILURE);
+				else if (launch == 0)
+				{
+					execv("/bin/ls", cmdS);
+					perror("No worky");
+					exit(EXIT_FAILURE);
+				}
+				else
+					waitpid(launch, &status, 0);
+			}
 		}
 	}
 
