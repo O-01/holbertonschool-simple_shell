@@ -10,7 +10,7 @@ void echo_cmd(int argc, char *argv[])
 
 	(void)argc;
 
-	if (argv[0] == "echo");
+	if (argv[0] == "echo")
 	{
 		for (; argv[i]; i++)
 			printf("%s", argv[i]);
