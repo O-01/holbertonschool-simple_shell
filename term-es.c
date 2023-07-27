@@ -44,8 +44,8 @@ void __attribute__ ((constructor)) coolIntro(void)
 int main(void)
 {
 	char *inPut = NULL;
-	size_t len = 0;/*
-			 ssize_t *cmdExist = NULL;*/
+	size_t len = 0;
+	/*ssize_t *cmdExist = NULL;*/
 
 	while (1)
 	{
