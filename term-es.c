@@ -18,7 +18,7 @@ int main(void)
 	{
 		signal(SIGINT, signalThing);
 		lePrompt("Σ ≈ ", &inPut, &len);
-		fprintf(stdout, "%s", inPut);
+	/*	fprintf(stdout, "%s", inPut); */
 
 		for (; inPut; ++iter)
 		{
