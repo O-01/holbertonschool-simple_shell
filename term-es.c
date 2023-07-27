@@ -13,13 +13,13 @@ int main(void)
 
 	while (1)
 	{
+		signal(SIGINT, signalThing);
 		lePrompt("Σ ≈ ", &inPut, &len);
-/*		signal(SIGINT, signalThing);*/
 		fprintf(stdout, "%s", inPut);
 		for (; inPut; ++iter)
 		{
 			separ = strsep(&inPut, SPC_DELIM);
-/*			fprintf(stdout, "%s\n", separ);*/
+			/*fprintf(stdout, "%s\n", separ);*/
 			if (strcmp("exit", separ) == 0)
 				exit(EXIT_SUCCESS);
 		}
