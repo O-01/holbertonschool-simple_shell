@@ -31,6 +31,17 @@ int main(void)
 /**
  *
  *
+ *
+ */
+
+cmd_t *cmdParse(char *inputStr)
+{
+	cmd_t *cmdFam = NULL;
+}
+
+/**
+ *
+ *
  */
 
 ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)

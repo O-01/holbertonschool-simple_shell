@@ -17,7 +17,11 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-
+typedef struct cmd_s
+{
+	char *cmdName;
+	struct cmd_s *next;
+} cmd_t;
 
 void __attribute__ ((constructor)) coolIntro(void);
 ssize_t lePrompt(const char *, char **, size_t *);
