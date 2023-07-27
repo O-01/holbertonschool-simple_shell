@@ -5,6 +5,59 @@
  *
  */
 
+int main(void)
+{
+	char *inPut = NULL, *separ = NULL;
+	size_t len = 0;
+	int iter = 0;
+
+	while (1)
+	{
+		lePrompt("Σ ≈ ", &inPut, &len);
+/*		signal(SIGINT, signalThing);*/
+		fprintf(stdout, "%s", inPut);
+		for (; inPut; ++iter)
+		{
+			separ = strsep(&inPut, SPC_DELIM);
+/*			fprintf(stdout, "%s\n", separ);*/
+			if (strcmp("exit", separ) == 0)
+				exit(EXIT_SUCCESS);
+		}
+	}
+
+	return (0);
+}
+
+/**
+ *
+ *
+ */
+
+ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
+{
+	ssize_t gotLine = 0;
+	char cwd[BUFSIZ];
+
+	fprintf(stderr, "%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
+	gotLine = getline(inPut, len, stdin);
+
+	return (gotLine);
+}
+
+void signalThing(int sig)
+{
+	char *prmptStyle = "Σ ≈ ";
+	char cwd[BUFSIZ];
+
+	if (sig == SIGINT)
+		fprintf(stderr, "\n%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
+}
+
+/**
+ *
+ *
+ */
+
 void __attribute__ ((constructor)) coolIntro(void)
 {
 	int fileDesc = 0;
@@ -34,49 +87,4 @@ void __attribute__ ((constructor)) coolIntro(void)
 
 	sleep(1);
 /*	system("clear");*/
-}
-
-/**
- *
- *
- */
-
-int main(void)
-{
-	char *inPut = NULL;
-	size_t len = 0;
-	int status = 0;
-
-	while (lePrompt("Σ ≈ ", &inPut, &len))
-	{
-/*		signal(SIGINT, signalThing);*/
-		status = stat;
-	}
-
-	return (0);
-}
-
-/**
- *
- *
- */
-
-ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
-{
-	ssize_t gotLine = 0;
-	char cwd[BUFSIZ];
-
-	fprintf(stderr, "%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
-	gotLine = getline(inPut, len, stdin);
-
-	return (gotLine);
-}
-
-void signalThing(int sig)
-{
-	char *prmptStyle = "Σ ≈ ";
-	char cwd[BUFSIZ];
-
-	if (sig == SIGINT)
-		fprintf(stderr, "\n%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
 }
