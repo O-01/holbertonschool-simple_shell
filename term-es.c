@@ -7,47 +7,57 @@
 
 int main(void)
 {
-	char *inPut = NULL, *separ = NULL;
+	char *inPut = NULL;
 	size_t len = 0;
 	pid_t launch = 0;
-	int iter = 0, status = 0;
-	char *cmdS[BUFSIZ] = {"/usr/bin/ls", "-laS", NULL, "./"};
-	char *cmdT[BUFSIZ];
+	int iter = 1, status = 0;
+	char *cmdS[BUFSIZ];
+	char *cmdT;
 
 	while (1)
 	{
 		signal(SIGINT, signalThing);
 		lePrompt("Σ ≈ ", &inPut, &len);
-	/*	fprintf(stdout, "%s", inPut); */
+		fprintf(stderr, "%s", inPut);
+
+		cmdT = strsep(&inPut, SPC_DELIM);
+		if (strcmp("exit\0", cmdT) == 0)
+			exit(EXIT_SUCCESS);
 
 		for (; inPut; ++iter)
-		{
-			separ = strsep(&inPut, SPC_DELIM);
-			cmdT[iter] = separ;
-			/*fprintf(stdout, "%s\n", separ);*/
-			if (strcmp("exit", separ) == 0)
-				exit(EXIT_SUCCESS);
-			if (strcmp("ls", separ) == 0)
-			{
-				cmdS[2] = cmdT[2];
-				launch = fork();
-				if (launch < 0)
-					exit(EXIT_FAILURE);
-				else if (launch == 0)
-				{
-					execv("/bin/ls", cmdS);
-					perror("No worky");
-					exit(EXIT_FAILURE);
-				}
-				else
-					waitpid(launch, &status, 0);
-			}
-		}
-	}
+			cmdS[iter] = strsep(&inPut, SPC_DELIM);
 
+		if (fileExist(cmdT) == 0)
+		{
+			launch = fork();
+			if (launch < 0)
+				perror("ERROR"), exit(EXIT_FAILURE);
+			if (launch == 0)
+			{
+				if (execvp(cmdT, cmdS) < 0)
+					perror("ERROR");
+			}
+			else
+				wait(&status);
+		}
+		*cmdS = NULL;
+		cmdT = NULL;
+		fflush(stdout);
+	}
 	return (0);
 }
 
+/**
+ *
+ *
+ */
+
+int fileExist(char *file)
+{
+	struct stat buffer;
+
+	return (stat(file, &buffer) == 0);
+}
 /**
  *
  *

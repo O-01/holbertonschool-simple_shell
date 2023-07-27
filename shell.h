@@ -21,5 +21,6 @@ void __attribute__ ((constructor)) coolIntro(void);
 ssize_t lePrompt(const char *, char **, size_t *);
 char *readInput(void);
 void signalThing(int sig);
+int fileExist(char *file);
 
 #endif
