@@ -44,11 +44,12 @@ void __attribute__ ((constructor)) coolIntro(void)
 int main(void)
 {
 	char *inPut = NULL;
-	size_t len = 0;/*
-			 ssize_t *cmdExist = NULL;*/
+	size_t len = 0;
+/* ssize_t *cmdExist = NULL;*/
 
 	while (1)
 	{
+/*		signal(SIGINT, signalThing);*/
 		/*cmdExist = */lePrompt("Σ ≈ ", &inPut, &len);
 	}
 
@@ -77,5 +78,5 @@ void signalThing(int sig)
 	char cwd[BUFSIZ];
 
 	if (sig == SIGINT)
-		fprintf(stdout, "\n%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
+		fprintf(stderr, "\n%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
 }
