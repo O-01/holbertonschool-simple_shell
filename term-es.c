@@ -8,23 +8,23 @@
 int main(void)
 {
 	char *inPut = NULL, *tok = NULL, *cpy = NULL;
-	size_t len = 0;
+	size_t inputLen = 0;
 	time_t iTime = time(NULL);
-	int iter = 0, flag = 0;
+	int iter = 0/*, flag = 0*/;
 	char *cmdS[BUFSIZ];
 
-	fprintf(stderr, "\nWELCOME ~ %s\n", asctime(gmtime(&iTime)));
+	fprintf(stderr, "WELCOME ~ %s\n", asctime(gmtime(&iTime)));
 
 	while (1)
 	{
 		signal(SIGINT, signalThing);
 
-		lePrompt("Σ ≈ ", &inPut, &len);
+		lePrompt("Σ ≈ ", &inPut, &inputLen);
 
-		*cmdS = malloc(sizeof(char *) * BUFSIZ);
+/*		*cmdS = malloc(sizeof(char *) * BUFSIZ);
 		if (!*cmdS)
 			return (-1);
-
+*/
 		cpy = strndup(inPut, BUFSIZ);
 
 		for (; (tok = voider(&cpy)); iter++)
@@ -38,16 +38,17 @@ int main(void)
 
 		for(iter = 0; cmdS[iter]; iter++)
 		{
-			if (flag == 1)
+/*			if (flag == 1)
 				fprintf(stderr, "\n");
 			fprintf(stderr, "'%s'", cmdS[iter]);
-			flag = 1;
+			flag = 1;*/
 			cmdS[iter] = NULL;
 		}
 
-		fprintf(stdout, "\n");
-		free(*cmdS), *cmdS = NULL;
-		flag = 0, iter = 0;
+/*		fprintf(stdout, "\n");*/
+/*		free(*cmdS);*/
+		*cmdS = NULL, iter = 0;
+/*		flag = 0;*/
 		fflush(stdout);
 	}
 	return (0);
@@ -138,6 +139,8 @@ void __attribute__ ((constructor)) coolIntro(void)
 	char *buffer;
 	ssize_t fileContent = 0, outPut;
 
+	system("clear");
+
 	fileDesc = open("intro", O_RDONLY);
 	if (fileDesc == -1)
 		return;
@@ -159,6 +162,6 @@ void __attribute__ ((constructor)) coolIntro(void)
 	if (outPut != fileContent)
 		return;
 
-	sleep(1);
-/*	system("clear");*/
+	sleep(3);
+	system("clear");
 }
