@@ -20,6 +20,7 @@ int main(void)
 		signal(SIGINT, signalThing);
 
 		lePrompt("Σ ≈ ", &inPut, &inputLen);
+		fflush(stdout);
 
 /*		*cmdS = malloc(sizeof(char *) * BUFSIZ);
 		if (!*cmdS)
@@ -34,7 +35,10 @@ int main(void)
 				fprintf(stdout, "BYE BYE\n"),exit(EXIT_SUCCESS);
 		}
 
-		forkExec(cmdS[0], cmdS);
+		if (fileExist(cmdS[0]) == 0)
+			forkExec(cmdS[0], cmdS);
+		else
+			perror(cmdS[0]), exit(EXIT_FAILURE);
 
 		for(iter = 0; cmdS[iter]; iter++)
 		{
