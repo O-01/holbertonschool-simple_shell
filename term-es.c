@@ -7,52 +7,36 @@
 
 int main(void)
 {
-	char *inPut = NULL, *tok = NULL, *cpy = NULL;
+	char *inPut = NULL, *cmdT = NULL, *dup = NULL;
 	size_t inputLen = 0;
-	/*time_t iTime = time(NULL);*/
-	int iter = 0/*, flag = 0*/;
-	char *cmdS[MAX_LEN];
-
-	/*fprintf(stdout, "WELCOME ~ %s\n", asctime(gmtime(&iTime)));*/
+	int iter = 0;
+	char *cmdS[MAX_LEN] = { NULL };
 
 	while (1)
 	{
 		signal(SIGINT, signalThing);
 
-		lePrompt("Σ ≈ ", &inPut, &inputLen);
+		if (lePrompt("Σ ≈ ", &inPut, &inputLen) == -1)
+			free(inPut), exit(0);
 
-/*		*cmdS = malloc(sizeof(char *) * BUFSIZ);
-		if (!*cmdS)
-			return (-1);
-*/
-		cpy = malloc(sizeof(char) * strlen(inPut));
+		dup = strndup(inPut, strlen(inPut));
 
-		cpy = strdup(inPut);
-
-		for (iter = 0; (tok = voider(&cpy)); iter++)
+		for (iter = 0; dup; iter++)
 		{
-			cmdS[iter] = tok;
+			cmdT = nonVoid(&dup);
+			cmdS[iter] = cmdT;
 			if (strcmp("exit", cmdS[0]) == 0)
-				/*fprintf(stdout, "BYE BYE\n"),*/exit(EXIT_SUCCESS);
+				exit(0);
 		}
 
-		free(cpy);
+		free(dup);
 
 		forkExec(cmdS[0], cmdS);
 
-		for(iter = 0; cmdS[iter]; iter++)
-		{
-/*			if (flag == 1)
-				fprintf(stderr, "\n");
-			fprintf(stderr, "'%s'", cmdS[iter]);
-			flag = 1;*/
+		for (iter = 0; cmdS[iter + 9]; iter++)
 			cmdS[iter] = NULL;
-		}
 
-/*		fprintf(stdout, "\n");*/
-		*cmdS = NULL;
 		free(*cmdS);
-/*		flag = 0;*/
 		fflush(stdout);
 	}
 	return (0);
@@ -83,19 +67,19 @@ void forkExec(char *cmd, char **argv)
 }
 
 /**
- * voider - voids invalid characters from input
+ * nonVoid - gives the next part of input that is not among defined delimiters
  * @input: input
- * Return: Always token
+ * Return: next acceptable instance of input, NULL otherwise
  */
 
-char *voider(char **input)
+char *nonVoid(char **input)
 {
-	char *tok = NULL;
+	char *cmdT = NULL;
 
-	while ((tok = strsep(input, SPC_DELIM)) && !*tok)
+	while ((cmdT = strsep(input, SPC_DELIM)) && !*cmdT)
 		;
 
-	return (tok);
+	return (cmdT);
 }
 
 /**
@@ -112,27 +96,6 @@ int fileExist(char *file)
 }
 
 /**
- * lePrompt - gets line from input and maintains prompt
- * @prmptStyle: How we want the prompt to look
- * @inPut: input received from stdin
- * @len: the length of the input from stdin
- * Return: the number of characters read
- */
-
-ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
-{
-	ssize_t gotLine = 0;
-
-	if (isatty(STDIN_FILENO))
-		fprintf(stdout, "%s", prmptStyle);
-	gotLine = getline(inPut, len, stdin);
-	if (gotLine == EOF)
-		/*fprintf(stderr, "^D\nOK BYE\n"), */exit(EXIT_SUCCESS);
-
-	return (gotLine);
-}
-
-/**
  * signalThing - checks for SIGINT
  * @sig: signal
  */
@@ -142,41 +105,6 @@ void signalThing(int sig)
 	char *prmptStyle = "Σ ≈ ";
 
 	if (sig == SIGINT)
-		fprintf(stdout, "\n%s", prmptStyle);
+		if (isatty(STDIN_FILENO))
+			fprintf(stderr, "\n%s", prmptStyle);
 }
-
-/**
- * coolIntro - intro splash screen
- *
-void __attribute__ ((constructor)) coolIntro(void)
-{
-	int fileDesc = 0;
-	char *buffer;
-	ssize_t fileContent = 0, outPut;
-
-	fprintf(stderr, "\033[3J\033[H\033[2J");
-
-	fileDesc = open("intro", O_RDONLY);
-	if (fileDesc == -1)
-		return;
-
-	buffer = malloc(sizeof(char) * BUFSIZ);
-	if (buffer == NULL)
-	{
-		close(fileDesc);
-		return;
-	}
-
-	fileContent = read(fileDesc, buffer, BUFSIZ);
-	close(fileDesc);
-	if (fileContent == -1)
-		return;
-
-	outPut = write(STDOUT_FILENO, buffer, fileContent);
-	free(buffer);
-	if (outPut != fileContent)
-		return;
-
-	sleep(3);
-	fprintf(stdout, "\033[3J\033[H\033[2J");
-}*/

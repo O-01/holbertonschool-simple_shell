@@ -23,7 +23,7 @@ ssize_t lePrompt(const char *, char **, size_t *);
 char *readInput(void);
 void signalThing(int sig);
 int fileExist(char *file);
-char *voider(char **input);
+char *nonVoid(char **input);
 void forkExec(char *, char **);
 
 #endif
