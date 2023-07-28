@@ -7,20 +7,20 @@
 
 int main(void)
 {
-	char *inPut = NULL;
+	char *inPut = NULL, *tok = NULL, *cpy = NULL;
 	size_t len = 0;
-/*	pid_t launch = 0;*/
+	time_t iTime = time(NULL);
 	int iter = 0, flag = 0;
 	char *cmdS[BUFSIZ];
-	char /**cmdT = NULL, */*tok = NULL, *cpy = NULL;
+
+	fprintf(stderr, "\nWELCOME ~ %s\n", asctime(gmtime(&iTime)));
 
 	while (1)
 	{
 		signal(SIGINT, signalThing);
-		lePrompt("Σ ≈ ", &inPut, &len);
-/*		fprintf(stderr, "%s", inPut);*/
 
-/*		cmdT = strsep(&inPut, SPC_DELIM);*/
+		lePrompt("Σ ≈ ", &inPut, &len);
+
 		*cmdS = malloc(sizeof(char *) * BUFSIZ);
 		if (!*cmdS)
 			return (-1);
@@ -31,7 +31,7 @@ int main(void)
 		{
 			cmdS[iter] = tok;
 			if (strcmp("exit", cmdS[0]) == 0)
-				exit(EXIT_SUCCESS);
+				fprintf(stdout, "BYE BYE\n"),exit(EXIT_SUCCESS);
 		}
 
 		forkExec(cmdS[0], cmdS);
@@ -64,11 +64,11 @@ void forkExec(char *cmd, char **argv)
 	launch = fork();
 
 	if (launch == -1)
-		perror("ERROR"), exit(EXIT_FAILURE);
+		perror(cmd), exit(EXIT_FAILURE);
 	else if (launch == 0)
 	{
 		if (execvp(cmd, argv) == -1)
-			perror("ERROR"), exit(EXIT_FAILURE);
+			perror(cmd), exit(EXIT_FAILURE);
 	}
 	else
 		wait(NULL);
@@ -112,6 +112,8 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 
 	fprintf(stderr, "%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
 	gotLine = getline(inPut, len, stdin);
+	if (gotLine == EOF)
+		fprintf(stderr, "^D\nOK BYE\n"), exit(EXIT_FAILURE);
 
 	return (gotLine);
 }
