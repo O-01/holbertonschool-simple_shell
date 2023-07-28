@@ -18,8 +18,8 @@ int main(void)
 	while (1)
 	{
 		signal(SIGINT, signalThing);
-		if (isatty(STDIN_FILENO))
-			lePrompt("Σ ≈ ", &inPut, &inputLen);
+
+		lePrompt("Σ ≈ ", &inPut, &inputLen);
 
 /*		*cmdS = malloc(sizeof(char *) * BUFSIZ);
 		if (!*cmdS)
@@ -120,7 +120,8 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 	ssize_t gotLine = 0;
 /*	char cwd[BUFSIZ];*/
 
-	fprintf(stdout, "%s", prmptStyle/*, getcwd(cwd,MAX_LEN)*/);
+	if (isatty(STDIN_FILENO))
+		fprintf(stdout, "%s", prmptStyle/*, getcwd(cwd,MAX_LEN)*/);
 	gotLine = getline(inPut, len, stdin);
 	if (gotLine == EOF)
 		/*fprintf(stderr, "^D\nOK BYE\n"), */exit(EXIT_SUCCESS);
@@ -136,10 +137,10 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 void signalThing(int sig)
 {
 	char *prmptStyle = "Σ ≈ ";
-	char cwd[MAX_LEN];
+/*	char cwd[MAX_LEN];*/
 
 	if (sig == SIGINT)
-		fprintf(stdout, "\n%s%s ≈ ", prmptStyle, getcwd(cwd, MAX_LEN));
+		fprintf(stdout, "\n%s", prmptStyle/*, getcwd(cwd, MAX_LEN)*/);
 }
 
 /**
