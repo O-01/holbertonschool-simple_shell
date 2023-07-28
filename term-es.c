@@ -120,10 +120,10 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 	ssize_t gotLine = 0;
 	char cwd[BUFSIZ];
 
-	fprintf(stderr, "%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
+	fprintf(stdout, "%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
 	gotLine = getline(inPut, len, stdin);
 	if (gotLine == EOF)
-		fprintf(stderr, "^D\nOK BYE\n"), exit(EXIT_FAILURE);
+		/*fprintf(stderr, "^D\nOK BYE\n"), */exit(EXIT_SUCCESS);
 
 	return (gotLine);
 }
@@ -139,7 +139,7 @@ void signalThing(int sig)
 	char cwd[BUFSIZ];
 
 	if (sig == SIGINT)
-		fprintf(stderr, "\n%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
+		fprintf(stdout, "\n%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
 }
 
 /**
