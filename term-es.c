@@ -31,13 +31,10 @@ int main(void)
 		{
 			cmdS[iter] = tok;
 			if (strcmp("exit", cmdS[0]) == 0)
-				fprintf(stdout, "BYE BYE\n"),exit(EXIT_SUCCESS);
+				/*fprintf(stdout, "BYE BYE\n"),*/exit(EXIT_SUCCESS);
 		}
 
-		if (fileExist(cmdS[0]) == 0)
-			forkExec(cmdS[0], cmdS);
-		else
-			perror(cmdS[0]), exit(EXIT_FAILURE);
+		forkExec(cmdS[0], cmdS);
 
 		for(iter = 0; cmdS[iter]; iter++)
 		{
