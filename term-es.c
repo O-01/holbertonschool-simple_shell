@@ -17,7 +17,7 @@ int main(void)
 
 	while (1)
 	{
-		signal(SIGINT, signalThing);
+		/*signal(SIGINT, signalThing);*/
 
 		lePrompt("Σ ≈ ", &inPut, &inputLen);
 
@@ -118,9 +118,9 @@ int fileExist(char *file)
 ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 {
 	ssize_t gotLine = 0;
-	char cwd[BUFSIZ];
+/*	char cwd[BUFSIZ];*/
 
-	fprintf(stdout, "%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
+	fprintf(stdout, "%s", prmptStyle/*, getcwd(cwd, BUFSIZ)*/);
 	gotLine = getline(inPut, len, stdin);
 	if (gotLine == EOF)
 		/*fprintf(stderr, "^D\nOK BYE\n"), */exit(EXIT_SUCCESS);
