@@ -25,7 +25,9 @@ int main(void)
 		if (!*cmdS)
 			return (-1);
 */
-		cpy = strndup(inPut, MAX_LEN);
+		cpy = malloc(sizeof(char) * strlen(inPut));
+
+		cpy = strdup(inPut);
 
 		for (iter = 0; (tok = voider(&cpy)); iter++)
 		{
@@ -33,6 +35,8 @@ int main(void)
 			if (strcmp("exit", cmdS[0]) == 0)
 				/*fprintf(stdout, "BYE BYE\n"),*/exit(EXIT_SUCCESS);
 		}
+
+		free(cpy);
 
 		forkExec(cmdS[0], cmdS);
 
@@ -46,8 +50,8 @@ int main(void)
 		}
 
 /*		fprintf(stdout, "\n");*/
-/*		free(*cmdS);*/
 		*cmdS = NULL;
+		free(*cmdS);
 /*		flag = 0;*/
 		fflush(stdout);
 	}
@@ -63,7 +67,7 @@ int main(void)
 void forkExec(char *cmd, char **argv)
 {
 	pid_t launch = 0;
-/*	int status = 0;*/
+	int status = 0;
 
 	launch = fork();
 
@@ -75,7 +79,7 @@ void forkExec(char *cmd, char **argv)
 			perror(cmd), exit(EXIT_FAILURE);
 	}
 	else
-		wait(NULL);
+		wait(&status);
 }
 
 /**
@@ -118,10 +122,9 @@ int fileExist(char *file)
 ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 {
 	ssize_t gotLine = 0;
-/*	char cwd[BUFSIZ];*/
 
 	if (isatty(STDIN_FILENO))
-		fprintf(stdout, "%s", prmptStyle/*, getcwd(cwd,MAX_LEN)*/);
+		fprintf(stdout, "%s", prmptStyle);
 	gotLine = getline(inPut, len, stdin);
 	if (gotLine == EOF)
 		/*fprintf(stderr, "^D\nOK BYE\n"), */exit(EXIT_SUCCESS);
@@ -137,10 +140,9 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 void signalThing(int sig)
 {
 	char *prmptStyle = "Σ ≈ ";
-/*	char cwd[MAX_LEN];*/
 
 	if (sig == SIGINT)
-		fprintf(stdout, "\n%s", prmptStyle/*, getcwd(cwd, MAX_LEN)*/);
+		fprintf(stdout, "\n%s", prmptStyle);
 }
 
 /**
