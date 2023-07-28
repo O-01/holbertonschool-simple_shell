@@ -11,7 +11,7 @@ int main(void)
 	size_t inputLen = 0;
 	/*time_t iTime = time(NULL);*/
 	int iter = 0/*, flag = 0*/;
-	char *cmdS[BUFSIZ];
+	char *cmdS[MAX_LEN];
 
 	/*fprintf(stdout, "WELCOME ~ %s\n", asctime(gmtime(&iTime)));*/
 
@@ -25,7 +25,7 @@ int main(void)
 		if (!*cmdS)
 			return (-1);
 */
-		cpy = strndup(inPut, BUFSIZ);
+		cpy = strndup(inPut, MAX_LEN);
 
 		for (iter = 0; (tok = voider(&cpy)); iter++)
 		{
@@ -120,7 +120,7 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 	ssize_t gotLine = 0;
 /*	char cwd[BUFSIZ];*/
 
-	fprintf(stdout, "%s", prmptStyle/*, getcwd(cwd, BUFSIZ)*/);
+	fprintf(stdout, "%s", prmptStyle/*, getcwd(cwd,MAX_LEN)*/);
 	gotLine = getline(inPut, len, stdin);
 	if (gotLine == EOF)
 		/*fprintf(stderr, "^D\nOK BYE\n"), */exit(EXIT_SUCCESS);
@@ -136,10 +136,10 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 void signalThing(int sig)
 {
 	char *prmptStyle = "Σ ≈ ";
-	char cwd[BUFSIZ];
+	char cwd[MAX_LEN];
 
 	if (sig == SIGINT)
-		fprintf(stdout, "\n%s%s ≈ ", prmptStyle, getcwd(cwd, BUFSIZ));
+		fprintf(stdout, "\n%s%s ≈ ", prmptStyle, getcwd(cwd, MAX_LEN));
 }
 
 /**
