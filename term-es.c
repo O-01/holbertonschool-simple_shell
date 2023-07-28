@@ -52,7 +52,7 @@ int main(void)
 /*		free(*cmdS);*/
 		*cmdS = NULL;
 /*		flag = 0;*/
-/*		fflush(stdout);*/
+		fflush(stdout);
 	}
 	return (0);
 }
