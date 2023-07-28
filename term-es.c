@@ -27,7 +27,7 @@ int main(void)
 */
 		cpy = strndup(inPut, BUFSIZ);
 
-		for (; (tok = voider(&cpy)); iter++)
+		for (iter = 0; (tok = voider(&cpy)); iter++)
 		{
 			cmdS[iter] = tok;
 			if (strcmp("exit", cmdS[0]) == 0)
@@ -47,7 +47,7 @@ int main(void)
 
 /*		fprintf(stdout, "\n");*/
 /*		free(*cmdS);*/
-		*cmdS = NULL, iter = 0;
+		*cmdS = NULL;
 /*		flag = 0;*/
 		fflush(stdout);
 	}
@@ -132,7 +132,7 @@ void signalThing(int sig)
  *
  *
  */
-
+/*
 void __attribute__ ((constructor)) coolIntro(void)
 {
 	int fileDesc = 0;
@@ -164,4 +164,4 @@ void __attribute__ ((constructor)) coolIntro(void)
 
 	sleep(3);
 	fprintf(stdout, "\033[3J\033[H\033[2J");
-}
+}*/
