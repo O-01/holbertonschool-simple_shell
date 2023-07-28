@@ -17,9 +17,9 @@ int main(void)
 
 	while (1)
 	{
-		/*signal(SIGINT, signalThing);*/
-
-		lePrompt("Σ ≈ ", &inPut, &inputLen);
+		signal(SIGINT, signalThing);
+		if (isatty(STDIN_FILENO))
+			lePrompt("Σ ≈ ", &inPut, &inputLen);
 
 /*		*cmdS = malloc(sizeof(char *) * BUFSIZ);
 		if (!*cmdS)
