@@ -1,19 +1,19 @@
 #include "shell.h"
 
 /**
- *
- *
+ * main - infinite loop for prompt
+ * Return: Always 0
  */
 
 int main(void)
 {
 	char *inPut = NULL, *tok = NULL, *cpy = NULL;
 	size_t inputLen = 0;
-	time_t iTime = time(NULL);
+	/*time_t iTime = time(NULL);*/
 	int iter = 0/*, flag = 0*/;
 	char *cmdS[BUFSIZ];
 
-	fprintf(stdout, "WELCOME ~ %s\n", asctime(gmtime(&iTime)));
+	/*fprintf(stdout, "WELCOME ~ %s\n", asctime(gmtime(&iTime)));*/
 
 	while (1)
 	{
@@ -55,6 +55,9 @@ int main(void)
 }
 
 /**
+ * forkExec - launches input command with its arguments
+ * @cmd: command
+ * @argv: arguments to the command
  */
 
 void forkExec(char *cmd, char **argv)
@@ -76,9 +79,9 @@ void forkExec(char *cmd, char **argv)
 }
 
 /**
- *
- *
- *
+ * voider - voids invalid characters from input
+ * @input: input
+ * Return: Always token
  */
 
 char *voider(char **input)
@@ -92,8 +95,9 @@ char *voider(char **input)
 }
 
 /**
- *
- *
+ * fileExist - checks if a file exists
+ * @file: file that needs to be checked
+ * Return: The status of the requested file
  */
 
 int fileExist(char *file)
@@ -102,10 +106,15 @@ int fileExist(char *file)
 
 	return (stat(file, &buffer) == 0);
 }
+
 /**
- *
- *
+ * lePrompt - gets line from input and maintains prompt
+ * @prmptStyle: How we want the prompt to look
+ * @inPut: input received from stdin
+ * @len: the length of the input from stdin
+ * Return: the number of characters read
  */
+
 ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 {
 	ssize_t gotLine = 0;
@@ -119,6 +128,11 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 	return (gotLine);
 }
 
+/**
+ * signalThing - checks for SIGINT
+ * @sig: signal
+ */
+
 void signalThing(int sig)
 {
 	char *prmptStyle = "Σ ≈ ";
@@ -129,10 +143,8 @@ void signalThing(int sig)
 }
 
 /**
+ * coolIntro - intro splash screen
  *
- *
- */
-/*
 void __attribute__ ((constructor)) coolIntro(void)
 {
 	int fileDesc = 0;
