@@ -1,7 +1,7 @@
 #ifndef __SHELL_H__
 #define __SHELL_H__
 
-#define SPC_DELIM " \n\r\t"
+#define SPC_DELIM " \t\n\r"
 #define PATH_DELIM ":"
 #define MAX_LEN 1024
 
@@ -22,5 +22,7 @@ ssize_t lePrompt(const char *, char **, size_t *);
 char *readInput(void);
 void signalThing(int sig);
 int fileExist(char *file);
+char *voider(char **input);
+void forkExec(char *, char **);
 
 #endif

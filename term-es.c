@@ -9,42 +9,85 @@ int main(void)
 {
 	char *inPut = NULL;
 	size_t len = 0;
-	pid_t launch = 0;
-	int iter = 1, status = 0;
+/*	pid_t launch = 0;*/
+	int iter = 0, flag = 0;
 	char *cmdS[BUFSIZ];
-	char *cmdT;
+	char /**cmdT = NULL, */*tok = NULL, *cpy = NULL;
 
 	while (1)
 	{
 		signal(SIGINT, signalThing);
 		lePrompt("Σ ≈ ", &inPut, &len);
-		fprintf(stderr, "%s", inPut);
+/*		fprintf(stderr, "%s", inPut);*/
 
-		cmdT = strsep(&inPut, SPC_DELIM);
-		if (strcmp("exit\0", cmdT) == 0)
-			exit(EXIT_SUCCESS);
+/*		cmdT = strsep(&inPut, SPC_DELIM);*/
+		*cmdS = malloc(sizeof(char *) * BUFSIZ);
+		if (!*cmdS)
+			return (-1);
 
-		for (; inPut; ++iter)
-			cmdS[iter] = strsep(&inPut, SPC_DELIM);
+		cpy = strndup(inPut, BUFSIZ);
 
-		if (fileExist(cmdT) == 0)
+		for (; (tok = voider(&cpy)); iter++)
 		{
-			launch = fork();
-			if (launch < 0)
-				perror("ERROR"), exit(EXIT_FAILURE);
-			if (launch == 0)
-			{
-				if (execvp(cmdT, cmdS) < 0)
-					perror("ERROR");
-			}
-			else
-				wait(&status);
+			cmdS[iter] = tok;
+			if (strcmp("exit", cmdS[0]) == 0)
+				exit(EXIT_SUCCESS);
 		}
-		*cmdS = NULL;
-		cmdT = NULL;
+
+		forkExec(cmdS[0], cmdS);
+
+		for(iter = 0; cmdS[iter]; iter++)
+		{
+			if (flag == 1)
+				fprintf(stderr, "\n");
+			fprintf(stderr, "'%s'", cmdS[iter]);
+			flag = 1;
+			cmdS[iter] = NULL;
+		}
+
+		fprintf(stdout, "\n");
+		free(*cmdS), *cmdS = NULL;
+		flag = 0, iter = 0;
 		fflush(stdout);
 	}
 	return (0);
+}
+
+/**
+ */
+
+void forkExec(char *cmd, char **argv)
+{
+	pid_t launch = 0;
+/*	int status = 0;*/
+
+	launch = fork();
+
+	if (launch == -1)
+		perror("ERROR"), exit(EXIT_FAILURE);
+	else if (launch == 0)
+	{
+		if (execvp(cmd, argv) == -1)
+			perror("ERROR"), exit(EXIT_FAILURE);
+	}
+	else
+		wait(NULL);
+}
+
+/**
+ *
+ *
+ *
+ */
+
+char *voider(char **input)
+{
+	char *tok = NULL;
+
+	while ((tok = strsep(input, SPC_DELIM)) && !*tok)
+		;
+
+	return (tok);
 }
 
 /**
