@@ -13,7 +13,7 @@ int main(void)
 	int iter = 0/*, flag = 0*/;
 	char *cmdS[BUFSIZ];
 
-	fprintf(stderr, "WELCOME ~ %s\n", asctime(gmtime(&iTime)));
+	fprintf(stdout, "WELCOME ~ %s\n", asctime(gmtime(&iTime)));
 
 	while (1)
 	{
@@ -139,7 +139,7 @@ void __attribute__ ((constructor)) coolIntro(void)
 	char *buffer;
 	ssize_t fileContent = 0, outPut;
 
-	system("clear");
+	fprintf(stderr, "\033[3J\033[H\033[2J");
 
 	fileDesc = open("intro", O_RDONLY);
 	if (fileDesc == -1)
@@ -163,5 +163,5 @@ void __attribute__ ((constructor)) coolIntro(void)
 		return;
 
 	sleep(3);
-	system("clear");
+	fprintf(stdout, "\033[3J\033[H\033[2J");
 }
