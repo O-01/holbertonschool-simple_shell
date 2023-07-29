@@ -26,20 +26,44 @@ int main(void)
 			cmdT = nonVoid(&dup);
 			cmdS[iter] = cmdT;
 			if (strcmp("exit", cmdS[0]) == 0)
-				exit(0);
+				freecmdS(inPut, cmdS), exit(0);
 		}
 
 		free(dup);
 
 		forkExec(cmdS[0], cmdS);
 
-		for (iter = 0; cmdS[iter + 9]; iter++)
-			cmdS[iter] = NULL;
+		freecmdS(inPut, cmdS);
 
-		free(*cmdS);
 		fflush(stdout);
 	}
 	return (0);
+}
+
+/**
+ * freecmdS - frees memory related to cmdS argv created in main
+ * @input: unaltered line populated from getline
+ * @cmdS: argument vector
+ */
+
+void freecmdS(char *input, char **cmdS)
+{
+	int iter = 0, spc = 0;
+
+	if (input)
+		for (iter = 0; input[iter]; iter++)
+			if (input[iter] == ' ' ||
+			    input[iter] == '\n' ||
+			    input[iter] == '\t' ||
+			    input[iter] == '\r')
+				spc++;
+
+	if (input && cmdS)
+	for (iter = 0; cmdS[iter + spc]; iter++)
+			cmdS[iter] = NULL;
+
+	if (*cmdS)
+		free(*cmdS);
 }
 
 /**

@@ -21,9 +21,10 @@
 void __attribute__ ((constructor)) coolIntro(void);
 ssize_t lePrompt(const char *, char **, size_t *);
 char *readInput(void);
-void signalThing(int sig);
-int fileExist(char *file);
-char *nonVoid(char **input);
+void signalThing(int);
+int fileExist(char *);
+char *nonVoid(char **);
 void forkExec(char *, char **);
+void freecmdS(char *, char **);
 
 #endif
