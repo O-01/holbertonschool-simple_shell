@@ -59,7 +59,7 @@ void freecmdS(char *input, char **cmdS)
 				spc++;
 
 	if (input && cmdS)
-	for (iter = 0; cmdS[iter + spc]; iter++)
+		for (iter = 0; cmdS[iter + spc]; iter++)
 			cmdS[iter] = NULL;
 
 	if (*cmdS)
@@ -75,7 +75,7 @@ void freecmdS(char *input, char **cmdS)
 void forkExec(char *cmd, char **argv)
 {
 	pid_t launch = 0;
-	int status = 0;
+/*	int status = 0;*/
 
 	launch = fork();
 
@@ -87,7 +87,7 @@ void forkExec(char *cmd, char **argv)
 			perror(cmd), exit(EXIT_FAILURE);
 	}
 	else
-		wait(&status);
+		wait(NULL);
 }
 
 /**
