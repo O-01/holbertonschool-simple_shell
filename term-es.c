@@ -17,7 +17,7 @@ int main(void)
 		signal(SIGINT, signalThing);
 
 		if (lePrompt("Σ ≈ ", &inPut, &inputLen) == -1)
-			free(inPut), exit(0);
+			exit(0);
 
 		dup = strndup(inPut, strlen(inPut));
 
@@ -58,14 +58,12 @@ void freecmdS(char *input, char **cmdS)
 			    input[iter] == '\r')
 				spc++;
 
-	if (cmdS)
-	{
+	if (input && cmdS)
 		for (iter = 0; cmdS[iter + spc]; iter++)
-			free(cmdS[iter]), cmdS[iter] = NULL;
+			cmdS[iter] = NULL;
 
-	/*if (*cmdS)
-		free(*cmdS);*/
-	}
+	if (*cmdS)
+		free(*cmdS);
 }
 
 /**
