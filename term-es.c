@@ -26,7 +26,7 @@ int main(void)
 			cmdT = nonVoid(&dup);
 			cmdS[iter] = cmdT;
 			if (strcmp("exit", cmdS[0]) == 0)
-				freecmdS(inPut, cmdS), exit(0);
+				freecmdS(inPut, cmdS), free(inPut), exit(0);
 		}
 
 		free(dup);
@@ -58,12 +58,14 @@ void freecmdS(char *input, char **cmdS)
 			    input[iter] == '\r')
 				spc++;
 
-	if (input && cmdS)
+	if (cmdS)
+	{
 		for (iter = 0; cmdS[iter + spc]; iter++)
-			cmdS[iter] = NULL;
+			free(cmdS[iter]), cmdS[iter] = NULL;
 
-	if (*cmdS)
-		free(*cmdS);
+	/*if (*cmdS)
+		free(*cmdS);*/
+	}
 }
 
 /**
