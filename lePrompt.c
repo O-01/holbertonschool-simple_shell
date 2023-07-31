@@ -13,7 +13,7 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 	ssize_t gotLine = 0;
 
 	if (isatty(STDIN_FILENO))
-		fprintf(stdout, "%s", prmptStyle);
+		write(STDOUT_FILENO, prmptStyle, strlen(prmptStyle));
 	gotLine = getline(inPut, len, stdin);
 	if (gotLine == EOF)
 		return (-1);
