@@ -8,10 +8,10 @@
 
 char *nonVoid(char **input)
 {
-        char *cmdT = NULL;
+	char *cmdT = NULL;
 
-        while ((cmdT = strsep(input, SPC_DELIM)) && !*cmdT)
-                ;
+	while ((cmdT = strsep(input, SPC_DELIM)) && !*cmdT)
+		;
 
-        return (cmdT);
+	return (cmdT);
 }

@@ -50,19 +50,21 @@ int main(void)
 
 void freecmdS(char *input, char **cmdS)
 {
-/*	int iter = 0, spc = 0;
-
-	if (input)
-		for (iter = 0; input[iter]; iter++)
-			if (input[iter] == ' ' ||
-			    input[iter] == '\n' ||
-			    input[iter] == '\t' ||
-			    input[iter] == '\r')
-				spc++;
-
-	if (input && cmdS)
-		for (iter = 0; cmdS[iter + spc]; iter++)
-		cmdS[iter] = NULL;*/
+/*
+ *	int iter = 0, spc = 0;
+ *
+ *	if (input)
+ *		for (iter = 0; input[iter]; iter++)
+ *			if (input[iter] == ' ' ||
+ *			    input[iter] == '\n' ||
+ *			    input[iter] == '\t' ||
+ *			    input[iter] == '\r')
+ *				spc++;
+ *
+ *	if (input && cmdS)
+ *		for (iter = 0; cmdS[iter + spc]; iter++)
+ *			cmdS[iter] = NULL;
+ */
 
 	if (input && *cmdS)
 		free(*cmdS), *cmdS = NULL;
@@ -70,7 +72,7 @@ void freecmdS(char *input, char **cmdS)
 
 /**
  * forkExec - launches input command with its arguments
- * @cmd: command
+ * @input: command
  * @argv: arguments to the command
  */
 
