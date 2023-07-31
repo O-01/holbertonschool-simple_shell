@@ -92,7 +92,6 @@ void forkExec(char *input, char **argv)
 	}
 	else
 		wait(&status);
-	}
 }
 
 /**
