@@ -17,6 +17,8 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len)
 	gotLine = getline(inPut, len, stdin);
 	if (gotLine == EOF)
 		return (-1);
+	if (gotLine == 0)
+		return (1);
 
 	return (gotLine);
 }

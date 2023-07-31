@@ -9,35 +9,39 @@ int main(void)
 {
 	char *inPut = NULL, *cmdT = NULL, *dup = NULL;
 	size_t inputLen = 0;
-	int iter = 0;
+	int iter = 0, prmptChk = 0;
 	char *cmdS[BUFSIZ] = { NULL };
 
 	while (1)
 	{
 		signal(SIGINT, signalThing);
 
-		if (lePrompt("# ", &inPut, &inputLen) == -1)
+		prmptChk = lePrompt("# ", &inPut, &inputLen);
+		if (prmptChk == -1)
 			free(inPut), exit(0);
-
-		dup = strdup(inPut);
-
-		for (iter = 0; dup; iter++)
+		else if (prmptChk == 1)
+			continue;
+		else
 		{
-			cmdT = nonVoid(&dup);
-			cmdS[iter] = cmdT;
-			if (strcmp("exit", cmdS[0]) == 0)
+			dup = strdup(inPut);
+
+			for (iter = 0; (cmdT = nonVoid(&dup)); iter++)
 			{
-				freecmdS(inPut, cmdS);
-				free(inPut);
-				exit(0);
+				cmdS[iter] = cmdT;
+				if (strcmp("exit", cmdS[0]) == 0)
+				{
+					freecmdS(inPut, cmdS);
+					free(inPut);
+					exit(0);
+				}
 			}
+
+			forkExec(inPut, cmdS);
+
+			free(dup), freecmdS(inPut, cmdS);
+
+			fflush(stdout);
 		}
-
-		forkExec(inPut, cmdS);
-
-		free(dup), freecmdS(inPut, cmdS);
-
-		fflush(stdout);
 	}
 	return (0);
 }
