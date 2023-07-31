@@ -80,18 +80,22 @@ void forkExec(char *input, char **argv)
 {
 	pid_t launch = 0;
 	int status = 0;
+	int fileExists = fileExist(argv[1]);
 
-	launch = fork();
-
-	if (launch == -1)
-		perror(argv[0]), exit(EXIT_FAILURE);
-	else if (launch == 0)
+	if (fileExists == 0)
 	{
-		if (execvp(argv[0], argv) == -1)
-			perror(argv[0]), free(input), exit(EXIT_FAILURE);
+		launch = fork();
+
+		if (launch == -1)
+			perror(argv[0]), exit(EXIT_FAILURE);
+		else if (launch == 0)
+		{
+			if (execvp(argv[0], argv) == -1)
+				perror(argv[0]), free(input), exit(2);
+		}
+		else
+			wait(&status);
 	}
-	else
-		wait(&status);
 }
 
 /**
