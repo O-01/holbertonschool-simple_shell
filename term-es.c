@@ -19,6 +19,8 @@ int main(void)
 		if (lePrompt("# ", &inPut, &inputLen) == -1)
 			free(inPut), exit(0);
 
+		getPATH(&inPut);
+
 		dup = strdup(inPut);
 
 		for (iter = 0; dup; iter++)
