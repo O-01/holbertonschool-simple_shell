@@ -28,5 +28,6 @@ char *nonVoid(char **);
 void forkExec(char *, char **);
 void freecmdS(char **);
 int emptyInput(char *);
+int parseInput(char *inPut, char *cmdS[]);
 
 #endif

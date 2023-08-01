@@ -7,9 +7,9 @@
 
 int main(void)
 {
-	char *inPut = NULL, *cmdT = NULL, *dup = NULL;
+	char *inPut = NULL;
 	size_t inputLen = 0;
-	int iter = 0, prmptChk = 0;
+	int prmptChk = 0;
 	char *cmdS[BUFSIZ] = { NULL };
 
 	while (1)
@@ -21,40 +21,23 @@ int main(void)
 			free(inPut), exit(0);
 		else if (prmptChk == 1)
 			continue;
+
 		if (emptyInput(inPut) == 0)
 		{
 			free(inPut), inPut = NULL;
 			continue;
 		}
-		else
-		{
-			dup = inPut;
-			for (iter = 0; (cmdT = nonVoid(&dup)); iter++)
-			{
-				cmdS[iter] = cmdT;
-				if (strcmp("exit", cmdS[0]) == 0)
-				{
-					freecmdS(cmdS);
-					if (inPut)
-						free(inPut);
-					exit(0);
-				}
-			}
 
-			if (cmdT != NULL)
-				cmdT = NULL;
+		parseInput(inPut, cmdS);
 
-			forkExec(inPut, cmdS);
+		forkExec(inPut, cmdS);
 
-			freecmdS(cmdS);
+		freecmdS(cmdS);
 
-			if (inPut != NULL)
-				free(inPut), inPut = NULL;
-			if (dup != NULL)
-				free(dup), dup = NULL;
+		if (inPut != NULL)
+			free(inPut), inPut = NULL;
 
-			fflush(stdout);
-		}
+		fflush(stdout);
 	}
 	return (0);
 }

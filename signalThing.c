@@ -7,9 +7,9 @@
 
 void signalThing(int sig)
 {
-        char *prmptStyle = "\n# ";
+	char *prmptStyle = "\n# ";
 
-        if (sig == SIGINT)
-                if (isatty(STDIN_FILENO))
-                        write(STDOUT_FILENO, prmptStyle, strlen(prmptStyle));
+	if (sig == SIGINT)
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, prmptStyle, strlen(prmptStyle));
 }
