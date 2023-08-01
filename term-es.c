@@ -21,21 +21,38 @@ int main(void)
 			free(inPut), exit(0);
 		else if (prmptChk == 1)
 			continue;
+		if (emptyInput(inPut) == 0)
+		{
+			free(inPut), inPut = NULL;
+			continue;
+		}
 		else
 		{
-			dup = strdup(inPut);
+			dup = inPut;
 			for (iter = 0; (cmdT = nonVoid(&dup)); iter++)
 			{
 				cmdS[iter] = cmdT;
 				if (strcmp("exit", cmdS[0]) == 0)
 				{
-					freecmdS(inPut, cmdS);
+					freecmdS(cmdS);
+					if (inPut)
+						free(inPut);
 					exit(0);
 				}
 			}
-			forkExec(inPut, cmdS);
 
-			free(dup), freecmdS(inPut, cmdS);
+			if (cmdT != NULL)
+				cmdT = NULL;
+
+			if (fileExist(cmdS[0]) == 0)
+				forkExec(inPut, cmdS);
+
+			freecmdS(cmdS);
+
+			if (inPut != NULL)
+				free(inPut), inPut = NULL;
+			if (dup != NULL)
+				free(dup), dup = NULL;
 
 			fflush(stdout);
 		}
@@ -49,49 +66,15 @@ int main(void)
  * @cmdS: argument vector
  */
 
-void freecmdS(char *input, char **cmdS)
+void freecmdS(char **cmdS)
 {
-/*
-	int iter = 0, spc = 0;
+	int iter = 0;
 
-	if (input)
-		for (iter = 0; input[iter]; iter++)
-			if (input[iter] == ' ' ||
-			    input[iter] == '\n' ||
-			    input[iter] == '\t' ||
-			    input[iter] == '\r')
-				spc++;
+	for (iter = 0; cmdS[iter]; iter++)
+		cmdS[iter] = NULL;
 
-	if (input && cmdS)
-		for (iter = 0; cmdS[iter + spc]; iter++)
-			cmdS[iter] = NULL;
-*/
-	if (input && *cmdS)
+	if (*cmdS)
 		free(*cmdS), *cmdS = NULL;
-}
-
-/**
- * forkExec - launches input command with its arguments
- * @input: command
- * @argv: arguments to the command
- */
-
-void forkExec(char *input, char **argv)
-{
-	pid_t launch = 0;
-	int status = 0;
-
-	launch = fork();
-
-	if (launch == -1)
-		perror(argv[0]), exit(EXIT_FAILURE);
-	else if (launch == 0)
-	{
-		if (execvp(argv[0], argv) == -1)
-			perror(argv[0]), free(input), exit(EXIT_FAILURE);
-	}
-	else
-		wait(&status);
 }
 
 /**
@@ -105,18 +88,4 @@ int fileExist(char *file)
 	struct stat buffer;
 
 	return (stat(file, &buffer) == 0);
-}
-
-/**
- * signalThing - checks for SIGINT
- * @sig: signal
- */
-
-void signalThing(int sig)
-{
-	char *prmptStyle = "\n# ";
-
-	if (sig == SIGINT)
-		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, prmptStyle, strlen(prmptStyle));
 }

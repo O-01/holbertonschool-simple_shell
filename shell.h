@@ -26,6 +26,7 @@ void getPATH(char **input);
 int fileExist(char *);
 char *nonVoid(char **);
 void forkExec(char *, char **);
-void freecmdS(char *, char **);
+void freecmdS(char **);
+int emptyInput(char *);
 
 #endif
