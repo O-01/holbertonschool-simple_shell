@@ -61,7 +61,6 @@ int main(void)
 
 /**
  * freecmdS - frees memory related to cmdS argv created in main
- * @input: unaltered line populated from getline
  * @cmdS: argument vector
  */
 

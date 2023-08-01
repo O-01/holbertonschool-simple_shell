@@ -8,16 +8,16 @@
 
 int emptyInput(char *inPut)
 {
-        int iter = 0;
-        size_t spc = 0;
+	int iter = 0;
+	size_t spc = 0;
 
-        if (inPut)
-                for (iter = 0; inPut[iter]; iter++)
-                        if (inPut[iter] == ' ' ||
-                            inPut[iter] == '\n' ||
-                            inPut[iter] == '\t' ||
-                            inPut[iter] == '\r')
-                                spc++;
+	if (inPut)
+		for (iter = 0; inPut[iter]; iter++)
+			if (inPut[iter] == ' ' ||
+			    inPut[iter] == '\n' ||
+			    inPut[iter] == '\t' ||
+			    inPut[iter] == '\r')
+				spc++;
 
-        return (spc == strlen(inPut) ? 0 : 1);
+	return (spc == strlen(inPut) ? 0 : 1);
 }
