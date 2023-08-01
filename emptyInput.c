@@ -3,7 +3,7 @@
 /**
  * emptyInput - judges if input is only space characters
  * @inPut: input string
- * Return: 0 if empty, 1 otherwise
+ * Return: 0 if empty, -1 otherwise
  */
 
 int emptyInput(char *inPut)
@@ -19,5 +19,5 @@ int emptyInput(char *inPut)
 			    inPut[iter] == '\r')
 				spc++;
 
-	return (spc == strlen(inPut) ? 0 : 1);
+	return (spc == strlen(inPut) ? 0 : -1);
 }

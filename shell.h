@@ -18,9 +18,10 @@
 #include <fcntl.h>
 #include <time.h>
 
+extern char **environ;
+
 void __attribute__ ((constructor)) coolIntro(void);
 ssize_t lePrompt(const char *, char **, size_t *);
-char *readInput(void);
 void signalThing(int);
 void getPATH(char **input);
 int fileExist(char *);
@@ -29,5 +30,9 @@ void forkExec(char *, char **);
 void freecmdS(char **);
 int emptyInput(char *);
 int parseInput(char *inPut, char *cmdS[]);
+
+/* Built-in implementations */
+int builtIn_env(void);
+void builtIn_cd(char *path);
 
 #endif
