@@ -4,6 +4,7 @@
  * parseInput - parses/tokenizes input into string vector
  * @inPut: object string
  * @cmdS: destination string vector
+ * Return: 0 if inPut parsed to cmdS, 1 otherwise
  */
 
 int parseInput(char *inPut, char *cmdS[])
