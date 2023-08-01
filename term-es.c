@@ -24,18 +24,15 @@ int main(void)
 		else
 		{
 			dup = strdup(inPut);
-
 			for (iter = 0; (cmdT = nonVoid(&dup)); iter++)
 			{
 				cmdS[iter] = cmdT;
 				if (strcmp("exit", cmdS[0]) == 0)
 				{
 					freecmdS(inPut, cmdS);
-					free(inPut);
 					exit(0);
 				}
 			}
-
 			forkExec(inPut, cmdS);
 
 			free(dup), freecmdS(inPut, cmdS);
@@ -55,21 +52,20 @@ int main(void)
 void freecmdS(char *input, char **cmdS)
 {
 /*
- *	int iter = 0, spc = 0;
- *
- *	if (input)
- *		for (iter = 0; input[iter]; iter++)
- *			if (input[iter] == ' ' ||
- *			    input[iter] == '\n' ||
- *			    input[iter] == '\t' ||
- *			    input[iter] == '\r')
- *				spc++;
- *
- *	if (input && cmdS)
- *		for (iter = 0; cmdS[iter + spc]; iter++)
- *			cmdS[iter] = NULL;
- */
+	int iter = 0, spc = 0;
 
+	if (input)
+		for (iter = 0; input[iter]; iter++)
+			if (input[iter] == ' ' ||
+			    input[iter] == '\n' ||
+			    input[iter] == '\t' ||
+			    input[iter] == '\r')
+				spc++;
+
+	if (input && cmdS)
+		for (iter = 0; cmdS[iter + spc]; iter++)
+			cmdS[iter] = NULL;
+*/
 	if (input && *cmdS)
 		free(*cmdS), *cmdS = NULL;
 }
@@ -107,7 +103,6 @@ void forkExec(char *input, char **argv)
 int fileExist(char *file)
 {
 	struct stat buffer;
-
 
 	return (stat(file, &buffer) == 0);
 }
