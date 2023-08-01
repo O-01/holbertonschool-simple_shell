@@ -44,8 +44,7 @@ int main(void)
 			if (cmdT != NULL)
 				cmdT = NULL;
 
-			if (fileExist(cmdS[0]) == 0)
-				forkExec(inPut, cmdS);
+			forkExec(inPut, cmdS);
 
 			freecmdS(cmdS);
 
