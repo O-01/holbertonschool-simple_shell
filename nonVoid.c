@@ -6,11 +6,11 @@
  * Return: next acceptable instance of input, NULL otherwise
  */
 
-char *nonVoid(char **input)
+char *nonVoid(char **input, char *delim)
 {
 	char *cmdT = NULL;
 
-	while ((cmdT = strsep(input, SPC_DELIM)) && !*cmdT)
+	while ((cmdT = strsep(input, delim)) && !*cmdT)
 		;
 
 	return (cmdT);

@@ -10,5 +10,5 @@ int fileExist(char *file)
 {
 	struct stat buffer;
 
-	return (stat(file, &buffer) == 0);
+	return (stat(file, &buffer));
 }

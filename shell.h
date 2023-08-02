@@ -23,16 +23,15 @@ extern char **environ;
 void __attribute__ ((constructor)) coolIntro(void);
 ssize_t lePrompt(const char *, char **, size_t *);
 void signalThing(int);
-void getPATH(char **input);
 int fileExist(char *);
-char *nonVoid(char **);
+char *nonVoid(char **, char *delim);
 void forkExec(char *, char **);
 void freecmdS(char **);
 int emptyInput(char *);
-int parseInput(char *inPut, char *cmdS[]);
+int parseInput(char *inPut, char *cmdS[], char *delim);
 
 /* Built-in implementations */
 int builtIn_env(void);
-void builtIn_cd(char *path);
+int builtIn_cd(char *path);
 
 #endif

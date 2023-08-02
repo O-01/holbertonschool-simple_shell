@@ -28,7 +28,7 @@ int main(void)
 			continue;
 		}
 
-		parseInput(inPut, cmdS);
+		parseInput(inPut, cmdS, SPC_DELIM);
 
 		forkExec(inPut, cmdS);
 

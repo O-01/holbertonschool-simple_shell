@@ -7,13 +7,13 @@
  * Return: 0 if inPut parsed to cmdS, -1 otherwise
  */
 
-int parseInput(char *inPut, char *cmdS[])
+int parseInput(char *inPut, char *cmdS[], char *delim)
 {
 	int iter = 0;
 	char *cmdT = NULL, *dup = NULL;
 
 	dup = inPut;
-	for (iter = 0; (cmdT = nonVoid(&dup)); iter++)
+	for (iter = 0; (cmdT = nonVoid(&dup, delim)); iter++)
 	{
 		cmdS[iter] = cmdT;
 		if (strcmp("exit", cmdS[0]) == 0)

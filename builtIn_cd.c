@@ -8,7 +8,7 @@
 
 /* This is a rough draft - completion to follow */
 /* Possible argv[] integration for '-', '.', '..', etc. */
-void builtIn_cd(char *path)
+int builtIn_cd(char *path)
 {
-	chdir(path);
+	return(chdir(path));
 }
