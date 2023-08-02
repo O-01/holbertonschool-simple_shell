@@ -1,0 +1,135 @@
+.\" Manpage for "TERM_ES" A simple shell implimentation
+
+.TH simple_shell "8/1/2023" "TERM_ES"
+
+.SH NAME
+
+\fBTERM_ES\fR - Simulates a Simple UNIX shell to handle multiple commands
+
+.SH SYNOPSIS
+
+\fB./TERM_ES\fR [OPTIONS] [COMMAND_STRING | file]
+
+.SH DESCRIPTION
+
+This program simulates a command interpreter based in Unix and GNU/LINUX with its basic commands.
+This simple_shell is not supossed to be an exact implimentation but can work with all basic functions.
+
+.SH OVERVIEW
+.br
+.\&
+.RS
+\&> ./TERM_ES
+
+The prompt '# ' will appear on terminal. You could enter commands following the prompt. You can't handle multiple commands using ';' '&&' '||' specifiers. Once you have entered the commands you execute the commands finishing by pressing 'ENTER' key.
+
+
+.SH FEATURES
+
+* This program displays a prompt and wait for the user to type a command. A command line always ends with a new line (when the user push ENTER key).
+
+* The prompt is displayed again each time a command has been executed.
+
+* When the user enters exit, TERM_ES will end and returns the status 0.
+
+* The user could stop the program using Ctrl+D (end of file).
+
+* The shell handles command lines with arguments and pathways.
+
+* The program does not quit when the user inputs ^C (Ctrl+C).
+
+* The program prints the current enviroment when the user types env.
+
+* This program executes the most common shell commands included with arguments.
+
+* If an command cannot be found, It prints an error message and display the prompt again.
+
+* This Shell supports commentaries using #.
+
+* This Shell does not support wildcard characters such as ls *.c in parameters (or commands). 
+
+* This shell does NOT support pipes |, shell logical operators as && or ||, neither commands separator ;.
+
+
+.SH COMMAND EXAMPLES AND OUTPUTS
+.br
+
+.\&
+.RS
+.TP
+.TP
+
+\fBls [OPTIONS..]\fR  - Lists the the files and directories in CWD.
+
+.TP
+.LP
+# ls
+.LP
+.TP
+.LP
+AUTHORS   builtIn_env.c   emptyInput.c   forkExec.c   goFission.c   intro   man_1_simple_shell   README.md   signalThing.c   test   builtIn_cd.c   cool.Intro .  fileExist.c   freeThings.c   hsh   lePrompt.c   parseInput.c   shell.h   TERM_ES.c
+.LP
+.TP
+.br
+
+\fBecho [OPTIONS..] string..\fR - displays a line of text
+
+.TP
+.LP
+# echo Hello World
+.LP
+.TP
+.LP
+Hello World
+.LP
+.TP
+
+\fBpwd [OPTIONS..]\fR - Prints the working directory
+
+.TP
+.br
+.LP
+# pwd
+.LP
+.TP
+.LP
+/holbertonschool-simple_shell
+.LP
+.TP
+.br
+
+\fBCtrl + D\FR - (EOF) Exits the current program
+
+.TP
+.LP
+# ^D
+.LP
+.TP
+.LP
+root@luckyuser:holbertonschool-simple_shell#
+.LP
+.br
+
+.TP
+\fBexit\FR - exits the shell
+.TP
+.LP
+# exit
+.LP
+.TP
+.LP
+root@luckyuser:holbertonschool-simple_shell#
+.LP
+
+.SH BUGS
+
+No known bugs at this time.
+
+.SH AUTHOR(S)
+
+Eric Dzyk <ericpo1sh@gmail.com>
+.LP
+Sammy Ansari <na.01goli@gmail.com>
+
+.TP
+
