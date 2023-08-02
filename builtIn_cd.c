@@ -10,5 +10,5 @@
 /* Possible argv[] integration for '-', '.', '..', etc. */
 int builtIn_cd(char *path)
 {
-	return(chdir(path));
+	return (chdir(path));
 }

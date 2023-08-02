@@ -1,12 +1,13 @@
 #include "shell.h"
 
 /**
- * nonVoid - gives the next part of input that is not among defined delimiters
+ * goFission - splits/tokenizes input string per delimiter(s)
  * @input: input
+ * @delim: delimiter(s) by which input is to be divided
  * Return: next acceptable instance of input, NULL otherwise
  */
 
-char *nonVoid(char **input, char *delim)
+char *goFission(char **input, char *delim)
 {
 	char *cmdT = NULL;
 

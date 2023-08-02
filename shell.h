@@ -24,7 +24,7 @@ void __attribute__ ((constructor)) coolIntro(void);
 ssize_t lePrompt(const char *, char **, size_t *);
 void signalThing(int);
 int fileExist(char *);
-char *nonVoid(char **, char *delim);
+char *goFission(char **, char *delim);
 void forkExec(char *, char **);
 void freecmdS(char **);
 int emptyInput(char *);
