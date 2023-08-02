@@ -20,6 +20,18 @@
 
 extern char **environ;
 
+/**
+ * struct builtIn - struct to assist in calling built-in functions
+ * @builtIn_call: built-in function name
+ * @bIn_function: function called if input = builtIn_call, NULL otherwise
+ */
+
+typedef struct builtIn
+{
+	char *builtIn_call;
+	int (*bIn_function)();
+} builtIn;
+
 void __attribute__ ((constructor)) coolIntro(void);
 ssize_t lePrompt(const char *, char **, size_t *);
 void signalThing(int);
