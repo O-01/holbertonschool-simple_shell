@@ -13,15 +13,39 @@
 .SH DESCRIPTION
 
 This program simulates a command interpreter based in Unix and GNU/LINUX with its basic commands.
-This simple_shell is not supossed to be an exact implimentation but can work with all basic functions.
+TERM_ES is both an interactive command language and a scripting language.
+TERM_ES is used by the operating system to control the execution of the system using shell scripts.
+TERM_ES is not supossed to be an exact implimentation of powershell, but can work with all basic functions.
 
 .SH OVERVIEW
+
+TERM_ES is a command that reads lines from either a file or
+the terminal, interprets them, and generally executes other commands.
+It is the program that is running when a user logs into the system. TERM_ES
+implements a language that has flow control constructs, a macro
+facility that provides a variety of features in addition to data storage,
+along with built in history and line editing capabilities. It
+incorporates many features to aid interactive use and has the advantage
+that the interpretative language is common to both interactive and non-
+interactive use (shell scripts).  That is, commands can be typed
+directly to the running shell or can be put into a file and the file
+can be executed directly by TERM_ES.
+
 .br
 .\&
 .RS
 \&> ./TERM_ES
 
 The prompt '# ' will appear on terminal. You could enter commands following the prompt. You can't handle multiple commands using ';' '&&' '||' specifiers. Once you have entered the commands you execute the commands finishing by pressing 'ENTER' key.
+
+.B Interactive mode
+
+The commands are run with user-interaction from keyboard.
+E.g. the shell can prompt the user to enter input.
+
+.B Non-interactive mode
+
+The shell will run from an automated process so it can't assume if can request input or that someone will see the output.
 
 
 .SH FEATURES
@@ -120,6 +144,9 @@ root@luckyuser:holbertonschool-simple_shell#
 .LP
 root@luckyuser:holbertonschool-simple_shell#
 .LP
+
+.SH SEE ALSO
+.I dash(1), echo(1), getopt(1), ksh(1), login(1), printf(1), test(1), getopt(3), passwd(5), environ(7), sysctl(8)
 
 .SH BUGS
 
