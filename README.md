@@ -1,4 +1,4 @@
-# *TERM_ES* - `A SimpleShell Implementation`
+# *TERM_ES* - A SimpleShell Implementation
 ## Introduction :wave:
 
 TERM_ES is a command that reads lines from either a file or
@@ -138,6 +138,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 ## FLOWCHART :chart_with_upwards_trend:
 ![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/589cd272-daba-4e13-b833-eae607e30767)
 
+##
 
 ## Compilation :hammer_and_wrench:
 ### ***TERM_ES*** was programmed on Ubuntu 20.04 LTS machine using gcc options:
