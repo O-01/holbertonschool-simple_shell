@@ -1,14 +1,14 @@
 # *TERM_ES* - `A SimpleShell Implementation`
-## Introduction
+## Introduction :wave:
 
 TERM_ES is a command that reads lines from either a file or
 the terminal, interprets them, and generally executes other commands.
 It is the program that is running when a user logs into the system. TERM_ES implements a language that has flow control constructs, a macro facility that provides a variety of features in addition to data storage, along with history and line editing capabilities. It incorporates many features to aid interactive use and has the advantage that the interpretative language is common to both interactive and non-interactive use (shell scripts).  That is, commands can be typed directly to the running shell or can be put into a file and the file can be executed directly by TERM_ES.
 
-## Description 
+## Description :writing_hand:
 This program simulates a command interpreter based in Unix and GNU/LINUX with its basic commands. TERM_ES is both an interactive command language and a scripting language. TERM_ES is used by the operating system to control the execution of the system using shell scripts. TERM_ES is not supposed to be an exact implementation of powershell, but can work with all basic functions.
 
-## Features 
+## Features :pushpin:
 
 - This program displays a prompt and wait for the user to type a command. A command line always ends with a new line (when the user push ENTER key).
 
@@ -30,7 +30,7 @@ This program simulates a command interpreter based in Unix and GNU/LINUX with it
 
 - This shell does support pipes, but doesn't support logical operators.
 
-## Commands/Outputs examples
+## Commands/Outputs examples :dart:
 
 ##### ls - Function that lists all files in current working directory.
 ```
@@ -78,7 +78,7 @@ char *goFission(char **input, char *delim)
 Hey! Thanks for visiting our repository!
 # 
 ```
-## TERM_ES accepts commands with options!
+## TERM_ES accepts commands with options! :tada:
 
 #### For this example, we will use the command 'ls' and the option '-l'.
 ```
@@ -109,17 +109,17 @@ total 208
 ```
 # cal -3
                             2023
-        July                 August              September        
-Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  
-                   1         1  2  3  4  5                  1  2  
- 2  3  4  5  6  7  8   6  7  8  9 10 11 12   3  4  5  6  7  8  9  
- 9 10 11 12 13 14 15  13 14 15 16 17 18 19  10 11 12 13 14 15 16  
-16 17 18 19 20 21 22  20 21 22 23 24 25 26  17 18 19 20 21 22 23  
-23 24 25 26 27 28 29  27 28 29 30 31        24 25 26 27 28 29 30  
-30 31                                                             
+        July                 August              September
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+                   1         1  2  3  4  5                  1  2
+ 2  3  4  5  6  7  8   6  7  8  9 10 11 12   3  4  5  6  7  8  9
+ 9 10 11 12 13 14 15  13 14 15 16 17 18 19  10 11 12 13 14 15 16
+16 17 18 19 20 21 22  20 21 22 23 24 25 26  17 18 19 20 21 22 23
+23 24 25 26 27 28 29  27 28 29 30 31        24 25 26 27 28 29 30
+30 31
 # 
 ```
-## Created/used functions
+## Created/used functions :blue_book:
 
 - `builtIn_env` - Prints environmental variables.
 - `emptyInput` - Scans if input contains only whitespaces.
@@ -135,13 +135,16 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 - `str_concat` - Concatenates two given strings.
 - `addHistory` - Stores all inputs from stdin to a list.
 
-## Compilation
-### *TERM_ES* was programmed on `Ubuntu 20.04 LTS` machine using the following gcc options:
+## FLOWCHART :chart_with_upwards_trend:
+PLACEHOLDER FOR FUTURE FLOWCHART
+
+## Compilation :hammer_and_wrench:
+### ***TERM_ES*** was programmed on `Ubuntu 20.04 LTS` machine using gcc options:
 `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
 
-## Authors/Contact info
-*Git:* [**Eric Dzyk**](https://github.com/ericpo1sh), [**Sammy Ansari**](https://github.com/O-01) 
-*Email:* <ericpo1sh@gmail.com> <na.01goli@gmail.com>
+## Authors/Contact info :phone: :mailbox:
+* **Eric Dzyk** **|** [Github](https://github.com/ericpo1sh) **|** [LinkedIn](https://linkedin.com/in/eric-dzyk-1b8976213) **|** [Email](mailto:ericpo1sh@gmail.com)  
+* **Sammy Ansari** **|** [Github](https://github.com/O-01) **|** [LinkedIn](https://linkedin.com/sammy) **|** [Email](mailto:na.01goli@gmail.com)
 
 ![Holberton School - School of Computer Science and Programming](https://uploads-ssl.webflow.com/6105315644a26f77912a1ada/63eea844ae4e3022154e2878_Holberton.png)
 `# exit`
