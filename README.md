@@ -136,10 +136,11 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 - `addHistory` - Stores all inputs from stdin to a list.
 
 ## FLOWCHART :chart_with_upwards_trend:
-PLACEHOLDER FOR FUTURE FLOWCHART
+![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/589cd272-daba-4e13-b833-eae607e30767)
+
 
 ## Compilation :hammer_and_wrench:
-### ***TERM_ES*** was programmed on `Ubuntu 20.04 LTS` machine using gcc options:
+### ***TERM_ES*** was programmed on Ubuntu 20.04 LTS machine using gcc options:
 `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
 
 ## Authors/Contact info :phone: :mailbox:
