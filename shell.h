@@ -41,6 +41,8 @@ void forkExec(char *, char **);
 void freecmdS(char **);
 int emptyInput(char *);
 int parseInput(char *inPut, char *cmdS[], char *delim);
+int obtainPath(char *);
+char *str_concat(char *dest, char *src);
 
 /* Built-in implementations */
 int builtIn_env(void);

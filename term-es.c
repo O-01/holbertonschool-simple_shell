@@ -30,6 +30,8 @@ int main(void)
 
 		parseInput(inPut, cmdS, SPC_DELIM);
 
+		obtainPath(cmdS[0]);
+
 		forkExec(inPut, cmdS);
 
 		freecmdS(cmdS);
