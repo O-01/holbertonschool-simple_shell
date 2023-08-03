@@ -145,6 +145,11 @@ PLACEHOLDER FOR FUTURE FLOWCHART
 ## Authors/Contact info :phone: :mailbox:
 * **Eric Dzyk** **|** [Github](https://github.com/ericpo1sh) **|** [LinkedIn](https://linkedin.com/in/eric-dzyk-1b8976213) **|** [Email](mailto:ericpo1sh@gmail.com)  
 * **Sammy Ansari** **|** [Github](https://github.com/O-01) **|** [LinkedIn](https://linkedin.com/sammy) **|** [Email](mailto:na.01goli@gmail.com)
-
+##
 ![Holberton School - School of Computer Science and Programming](https://uploads-ssl.webflow.com/6105315644a26f77912a1ada/63eea844ae4e3022154e2878_Holberton.png)
-`# exit`
+##
+
+```
+# exit
+OK BYE BYE!
+```
