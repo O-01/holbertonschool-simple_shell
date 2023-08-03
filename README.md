@@ -131,6 +131,9 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 - `freecmdS` - Frees memory related to 'cmdS' in main.
 - `lePrompt` - Gets line from input and maintains prompt.
 - `parseInput` - Parses/tokenizes input into string vector.
+- `obtainPath` - Processes PATH env variable for stat/access.
+- `str_concat` - Concatenates two given strings.
+- `addHistory` - Stores all inputs from stdin to a list.
 
 ## Compilation
 ### *TERM_ES* was programmed on `Ubuntu 20.04 LTS` machine using the following gcc options:
