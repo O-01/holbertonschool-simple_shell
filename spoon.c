@@ -17,14 +17,21 @@ int spoon(char *input, char *cmd, char **argv)
 	if (builtIn(cmd, argv[1], input, argv) == 1)
 		return (1);
 	else if (fileExist(cmd) == 0)
-		forkExec(input, cmd, argv);
+	{
+		if (access(cmd, X_OK) == 0)
+			forkExec(input, cmd, argv);
+	}
 	else
 	{
 		feedCMD = obtainPath(cmd);
 
 		for (iter = 0; feedCMD[iter]; iter++)
-			if (fileExist(feedCMD[iter]) == 0)
+			if (fileExist(feedCMD[iter]) == 0 &&
+			    access(feedCMD[iter], X_OK) == 0)
+			{
 				forkExec(input, feedCMD[iter], argv);
+				break;
+			}
 
 		for (iter = 0; feedCMD[iter]; iter++)
 		{
