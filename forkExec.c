@@ -22,7 +22,7 @@ int forkExec(char *input, char *cmd, char **argv)
 		perror(cmd), exit(EXIT_FAILURE);
 	else if (launch == 0)
 	{
-		if (execve(cmd, argv, NULL) == -1)
+		if (execvp(cmd, argv) == -1)
 			perror(cmd), free(input), exit(EXIT_FAILURE);
 	}
 	else

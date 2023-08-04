@@ -35,7 +35,7 @@ char *getenvY(char *varNam)
 	     (choP[iter] = goFission(&enV1, "=")) != NULL;
 	     iter++)
 		;
-	if (choP[1] == NULL)
+	if (strlen(choP[1]) < 2)
 	{
 		free(eVar), eVar = NULL, free(enV), enV = NULL, freecmdS(choP);
 		return (NULL);

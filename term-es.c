@@ -40,7 +40,7 @@ int main(int __attribute__((unused)) argc, char **argv)
 			free(inPut), inPut = NULL;
 
 		if (eXit == 1)
-			return(2);
+			return (2);
 
 		fflush(stdout);
 	}
