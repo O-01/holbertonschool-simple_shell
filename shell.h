@@ -22,30 +22,38 @@ extern char **environ;
 
 /**
  * struct builtIn - struct to assist in calling built-in functions
- * @builtIn_call: built-in function name
- * @bIn_function: function called if input = builtIn_call, NULL otherwise
+ * @bIn_call: built-in function name
+ * @bIn_fnc: function called if input = builtIn_call, NULL otherwise
  */
 
 typedef struct builtIn
 {
-	char *builtIn_call;
-	int (*bIn_function)();
-} builtIn;
+	char *bIn_call;
+	int (*bIn_fnc)();
+} bI_t;
 
 void __attribute__ ((constructor)) coolIntro(void);
 ssize_t lePrompt(const char *, char **, size_t *);
 void signalThing(int);
 int fileExist(char *);
 char *goFission(char **, char *delim);
-void forkExec(char *, char **);
+void forkExec(char *, char *, char **);
 void freecmdS(char **);
 int emptyInput(char *);
 int parseInput(char *inPut, char *cmdS[], char *delim);
-int obtainPath(char *);
+char **obtainPath(char *);
+char **deColon(char *src, char *chop);
 char *str_concat(char *dest, char *src);
+int memCalcPATH(char *patH, char *cmdS);
+char **slashCMD(char **dest, char *cmdS);
+void *_calloc(size_t num, size_t size);
+char *getenvY(char *varName);
+int spoon(char *input, char *cmd, char **argv);
 
 /* Built-in implementations */
-int builtIn_env(void);
-int builtIn_cd(char *path);
+int builtIn(char *cmdS, char *arg, char *input, char **argv);
+int builtIn_env(char *, char *, char **);
+int builtIn_cd(char *, char *path, char **);
+int builtIn_exit(char *code, char *input, char **argv);
 
 #endif

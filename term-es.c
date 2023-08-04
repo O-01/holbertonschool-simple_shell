@@ -10,7 +10,7 @@ int main(void)
 	char *inPut = NULL;
 	size_t inputLen = 0;
 	int prmptChk = 0;
-	char *cmdS[BUFSIZ] = { NULL };
+	char *cmdS[MAX_LEN] = { NULL };
 
 	while (1)
 	{
@@ -30,9 +30,7 @@ int main(void)
 
 		parseInput(inPut, cmdS, SPC_DELIM);
 
-		obtainPath(cmdS[0]);
-
-		forkExec(inPut, cmdS);
+		spoon(inPut, cmdS[0], cmdS);
 
 		freecmdS(cmdS);
 

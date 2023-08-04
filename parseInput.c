@@ -14,16 +14,8 @@ int parseInput(char *inPut, char *cmdS[], char *delim)
 	char *cmdT = NULL, *dup = NULL;
 
 	for (dup = inPut, iter = 0; (cmdT = goFission(&dup, delim)); iter++)
-	{
 		cmdS[iter] = cmdT;
-		if (strcmp("exit", cmdS[0]) == 0)
-		{
-			freecmdS(cmdS);
-			if (inPut)
-				free(inPut);
-			exit(0);
-		}
-	}
+
 	if (cmdT != NULL)
 		cmdT = NULL;
 

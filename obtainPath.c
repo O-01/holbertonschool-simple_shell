@@ -6,45 +6,36 @@
  * Return: 0 upon success, -1 upon malloc failure
  */
 
-int obtainPath(char *cmdS)
+char **obtainPath(char *cmdS)
 {
-	int iter = 0, colon = 0;
-	char slash[MAX_LEN] = "/", *slashed = NULL;
-	char *grabPath = NULL, *pathVar = "PATH=", *patH = NULL;
-	char *enV = NULL, *enV1 = NULL, *chop = NULL, *chop1 = NULL;
-	char *chopPath[BUFSIZ] = { NULL }, *chopDir[BUFSIZ] = { NULL };
+	int iter = 0, mem = 0;
+	char *grabPath = NULL, *enV = NULL, *enV1 = NULL, *chop = NULL;
+	char *chopPath[MAX_LEN] = { NULL }, **chopDir = NULL, **outPut = NULL;
 
-	for (iter = 0; environ[iter]; iter++)
-		if (strncmp(environ[iter], pathVar, 5) == 0)
-			grabPath = environ[iter];
+	if (!cmdS)
+		return (NULL);
+
+	grabPath = getenvY("PATH");
+
 	enV = malloc(sizeof(char) * (strlen(grabPath) + 1));
 	if (!enV)
-		return (-1);
+		return (NULL);
+
 	strcpy(enV, grabPath), grabPath = NULL;
 	for (iter = 0, enV1 = enV;
 	     (chopPath[iter] = goFission(&enV1, "=")) != NULL;
 	     iter++)
 		;
-	for (iter = 0; chopPath[1][iter]; iter++)
-		if (chopPath[1][iter] == ':')
-			colon++;
-	colon++;
-	colon *= (strlen(cmdS) + 1);
-	colon += (strlen(chopPath[1]) + 1);
-	chop = malloc(sizeof(char) * colon);
+
+	mem = memCalcPATH(chopPath[1], cmdS);
+	chop = malloc(sizeof(char) * mem);
 	if (!chop)
-		return (-1);
-	strcpy(chop, chopPath[1]);
-	for (iter = 0, chop1 = chop;
-	     (chopDir[iter] = goFission(&chop1, ":"));
-	     iter++)
-		;
-	slashed = strcat(slash, cmdS);
-	for (iter = 0; chopDir[iter] != NULL; iter++)
-	{
-		patH = str_concat(chopDir[iter], slashed);
-		printf("%s\n", patH), free(patH), patH = NULL;
-	}
-	freecmdS(chopDir), freecmdS(chopPath), free(chop), free(enV);
-	return (0);
+		return (NULL);
+	chopDir = deColon(chopPath[1], chop);
+	outPut = slashCMD(chopDir, cmdS);
+
+	free(chopDir);
+	freecmdS(chopPath), free(chop), free(enV);
+
+	return (outPut);
 }
