@@ -13,7 +13,9 @@ This program simulates a command interpreter based in Unix and GNU/LINUX with it
 - This program displays a prompt and wait for the user to type a command. A command line always ends with a new line (when the user push ENTER key).
 
 - The prompt is displayed again each time a command has been executed.
+
 - When the user enters exit, TERM_ES will end and returns the status 0.
+
 - The user could stop the program using Ctrl+D (end of file).
 
 - The shell handles command lines with arguments and pathways.
@@ -72,6 +74,31 @@ char *goFission(char **input, char *delim)
 }
 # 
 ```
+##### cd - Function that changes the working directory.
+```
+# ls
+addHistory.c                           holbertonschool-zero_day  push
+Betty                                  home                      root
+bin                                    lib                       run
+boot                                   lib32                     sbin
+dev                                    lib64                     srv
+etc                                    libx32                    sys
+EXAMPLE.md                             man_1_simple_shell        tmp
+holbertonschool-low_level_programming  media                     usr
+holbertonschool-printf                 mnt                       var
+holbertonschool-shell                  opt
+holbertonschool-simple_shell           proc
+# cd /holbertonschool-simple_shell
+# ls
+AUTHORS         cool.Intro    getenvY.c           memCalcPATH.c  signalThing.c
+builtIn.c       deColon.c     goFission.c         obtainPath.c   slashCMD.c
+builtIn_cd.c    emptyInput.c  hsh                 parseInput.c   spoon.c
+builtIn_env.c   eX127.c       intro               querY.c        str_concat.c
+builtIn_exit.c  forkExec.c    lePrompt.c          README.md      term-es.c
+_calloc.c       freeThings.c  man_1_simple_shell  shell.h        test
+#      
+```
+
 ##### echo - Built in function that displays a line of text to standard output.
 ```
 # echo Hey! Thanks for visiting our repository!
@@ -122,18 +149,28 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 ## Created/used functions :blue_book:
 
 - `builtIn_env` - Prints environmental variables.
+- `builtIn` - Manages built-in functions & calls them upon matching input.
 - `emptyInput` - Scans if input contains only whitespaces.
 - `forkExec` - Launches input command with its arguments.
 - `goFission` - Splits/tokenizes input string per delimiter(s).
 - `signalThing` - Checks for EOF/SIGINT and exits terminal.
 - `builtIn_cd` - Changes current working directory.
-- `fileExist` - Checks if targeted file exists.
+- `querY` - Checks if targeted file exists.
 - `freecmdS` - Frees memory related to 'cmdS' in main.
+- `builtIn_exit` - Built-in provision for terminal exit upon command.
 - `lePrompt` - Gets line from input and maintains prompt.
 - `parseInput` - Parses/tokenizes input into string vector.
 - `obtainPath` - Processes PATH env variable for stat/access.
 - `str_concat` - Concatenates two given strings.
 - `addHistory` - Stores all inputs from stdin to a list.
+- `_calloc` - Allocates memory for array of objects of specified size.
+- `deColon` - Divides input string into several based on colons present.
+- `eX127` - Prints error message to stderr for exit code 127.
+- `getenvY` - Custom getenv function.
+- `mamCalcPATH` - Calculates memory to be allocated when handling PATH.
+- `slashCMD` - Concatenates slash + cmdS to all strings in a vector.
+- `spoon` - Manages input cmd, filtering through builtIn & querY.
+
 
 ## FLOWCHART :chart_with_upwards_trend:
 ![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/589cd272-daba-4e13-b833-eae607e30767)
