@@ -38,10 +38,11 @@ int main(int __attribute__((unused)) argc, char **argv)
 		freecmdS(cmdS);
 		if (inPut != NULL)
 			free(inPut), inPut = NULL;
-		fflush(stdout);
 
 		if (eXit == 1)
-			exit(2);
+			return(2);
+
+		fflush(stdout);
 	}
 	return (0);
 }
