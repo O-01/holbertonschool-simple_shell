@@ -18,15 +18,14 @@ char *getenvY(char *varNam)
 		return (NULL);
 	eVar = str_concat(varNam, "=");
 	for (iter = 0, varLen = strlen(varNam) + 1; environ[iter]; iter++)
-	{
-		if (strncmp(environ[iter], eVar, varLen) == 0)
+		if (!strncmp(environ[iter], eVar, varLen))
 		{
 			graB = environ[iter];
 			break;
 		}
-		if (environ[iter + 1] == NULL)
-			return (NULL);
-	}
+	if (!strcmp(environ[iter], eVar))
+		return (NULL);
+
 	enV = malloc(sizeof(char) * (strlen(graB) + 1));
 	if (!enV)
 		return (NULL);
