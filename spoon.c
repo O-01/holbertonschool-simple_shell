@@ -34,7 +34,7 @@ int spoon(char *input, char *cmd, char **argv, char *prog)
 		if (!feeD && isatty(STDIN_FILENO) == 0)
 			perror(cmd), exit(127);
 		if (!feeD)
-			ex127(cmd, prog, input);
+			eX127(cmd, prog, input);
 		for (iter = 0; feeD[iter]; iter++)
 			if (!querY(feeD[iter]) && !access(feeD[iter], X_OK))
 			{
