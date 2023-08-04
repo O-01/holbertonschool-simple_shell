@@ -32,8 +32,7 @@ int main(int __attribute__((unused)) argc, char **argv)
 
 		if (parseInput(inPut, cmdS, SPC_DELIM) == 1)
 			eXit = 1;
-		printf("%d - %d\n", access(cmdS[0], F_OK), access(cmdS[0], X_OK));
-		printf("%d\n", querY(cmdS[0]));
+
 		spoon(inPut, cmdS[0], cmdS, argv[0]);
 
 		freecmdS(cmdS);
