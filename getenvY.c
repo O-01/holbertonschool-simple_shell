@@ -24,8 +24,10 @@ char *getenvY(char *varNam)
 			break;
 		}
 	if (!strcmp(environ[iter], eVar))
+	{
+		free(eVar), eVar = NULL;
 		return (NULL);
-
+	}
 	enV = malloc(sizeof(char) * (strlen(graB) + 1));
 	if (!enV)
 		return (NULL);
@@ -34,7 +36,7 @@ char *getenvY(char *varNam)
 	     (choP[iter] = goFission(&enV1, "=")) != NULL;
 	     iter++)
 		;
-	if (iter < 2)
+	if (!strlen(choP[1]))
 	{
 		free(eVar), eVar = NULL, free(enV), enV = NULL, freecmdS(choP);
 		return (NULL);
