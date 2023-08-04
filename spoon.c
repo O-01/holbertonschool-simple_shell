@@ -16,7 +16,8 @@ int spoon(char *input, char *cmd, char **argv)
 
 	if (builtIn(cmd, argv[1], input, argv) == 1)
 		return (1);
-	else if (fileExist(cmd) == 0)
+
+	if (fileExist(cmd) == 0)
 	{
 		if (access(cmd, X_OK) == 0)
 			forkExec(input, cmd, argv);
@@ -24,6 +25,10 @@ int spoon(char *input, char *cmd, char **argv)
 	else
 	{
 		feedCMD = obtainPath(cmd);
+		if (feedCMD == NULL && isatty(STDIN_FILENO) == 0)
+			perror(cmd), exit(127);
+		else if (feedCMD == NULL)
+			return (-1);
 
 		for (iter = 0; feedCMD[iter]; iter++)
 			if (fileExist(feedCMD[iter]) == 0 &&

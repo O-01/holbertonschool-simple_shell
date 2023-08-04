@@ -12,8 +12,14 @@ int builtIn_cd(char *path, char *input, char __attribute__((unused)) **argv)
 {
 	(void)input;
 
-	if (!path || fileExist(path) == -1)
+	if (fileExist(path) == -1)
 		return (-1);
+
+	if (!path)
+		path = getenvY("HOME");
+
+	if (strcmp(path, "-") == 0/* && getenvY("OLDPWD"*) != NULL*/)
+		/*path = getenvY("OLDPWD"), */printf("%s\n", getenvY("OLDPWD"));
 
 	return (chdir(path));
 }
