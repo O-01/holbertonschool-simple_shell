@@ -2,10 +2,12 @@
 
 /**
  * main - infinite loop for prompt
+ * @argc: argument count, unused for now
+ * @argv: vector of arguments passed on run
  * Return: Always 0
  */
 
-int main(void)
+int main(int __attribute__((unused)) argc, char **argv)
 {
 	char *inPut = NULL;
 	size_t inputLen = 0;
@@ -31,13 +33,11 @@ int main(void)
 		if (parseInput(inPut, cmdS, SPC_DELIM) == 1)
 			eXit = 1;
 
-		spoon(inPut, cmdS[0], cmdS);
+		spoon(inPut, cmdS[0], cmdS, argv[0]);
 
 		freecmdS(cmdS);
-
 		if (inPut != NULL)
 			free(inPut), inPut = NULL;
-
 		fflush(stdout);
 
 		if (eXit == 1)

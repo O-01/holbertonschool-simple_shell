@@ -6,10 +6,11 @@
  * @input: CLI input
  * @cmd: the first element of input & command to be run, if possible
  * @argv: vector of arguments retrieved from input
+ * @prog: name of program, passed to error functions
  * Return: 0 upon success, 1 if built-in called, -1 upon error
  */
 
-int spoon(char *input, char *cmd, char **argv)
+int spoon(char *input, char *cmd, char **argv, char *prog)
 {
 	int iter = 0, flag = 0;
 	char **feeD = NULL;
@@ -45,10 +46,24 @@ int spoon(char *input, char *cmd, char **argv)
 		free(feeD);
 		if (flag == 0)
 		{
-			perror(cmd);
+			eX127(cmd, prog);
 			if (isatty(STDIN_FILENO) == 0)
 				exit(127);
 		}
 	}
+	return (0);
+}
+
+/**
+ * eX127 - prints error message to stderr for exit code 127
+ * @cmd: command that is not found
+ * @prog: name of program
+ * Return: 0 upon success
+ */
+
+int eX127(char *cmd, char *prog)
+{
+	fprintf(stderr, "%s: 1: %s: not found\n", prog, cmd);
+
 	return (0);
 }

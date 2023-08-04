@@ -48,12 +48,15 @@ int memCalcPATH(char *patH, char *cmdS);
 char **slashCMD(char **dest, char *cmdS);
 void *_calloc(size_t num, size_t size);
 char *getenvY(char *varName);
-int spoon(char *input, char *cmd, char **argv);
+int spoon(char *input, char *cmd, char **argv, char *prog);
 
 /* Built-in implementations */
 int builtIn(char *cmdS, char *arg, char *input, char **argv);
 int builtIn_env(char *, char *, char **);
 int builtIn_cd(char *, char *path, char **);
 int builtIn_exit(char *code, char *input, char **argv);
+
+/* Error handling */
+int eX127(char *cmd, char *prog);
 
 #endif
