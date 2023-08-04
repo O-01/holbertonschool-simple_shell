@@ -17,24 +17,13 @@ int spoon(char *input, char *cmd, char **argv, char *prog)
 
 	if (builtIn(cmd, argv[1], input, argv) == 1)
 		return (1);
-	if (!querY(cmd))
-	{
-		if (!access(cmd, X_OK))
-			forkExec(input, cmd, argv);
-		else
-		{
-			perror(cmd);
-			if (isatty(STDIN_FILENO) == 0)
-				free(input), input = NULL, exit(13);
-		}
-	}
-	else
+	if (access(cmd, X_OK) == -1)
 	{
 		feeD = obtainPath(cmd);
 		if (!feeD)
 			eX127(cmd, prog, input);
 		for (iter = 0; feeD[iter]; iter++)
-			if (!querY(feeD[iter]) && !access(feeD[iter], X_OK))
+			if (!access(feeD[iter], X_OK) && !querY(feeD[iter]))
 			{
 				forkExec(input, feeD[iter], argv), flag = 1;
 				break;
@@ -44,6 +33,17 @@ int spoon(char *input, char *cmd, char **argv, char *prog)
 		free(feeD);
 		if (flag == 0)
 			eX127(cmd, prog, input);
+	}
+	else
+	{
+		if (!querY(cmd))
+			forkExec(input, cmd, argv);
+		else
+		{
+			perror(cmd);
+			if (isatty(STDIN_FILENO) == 0)
+				free(input), input = NULL, exit(13);
+		}
 	}
 	return (0);
 }
