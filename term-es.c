@@ -33,7 +33,6 @@ int main(int __attribute__((unused)) argc, char **argv)
 		if (parseInput(inPut, cmdS, SPC_DELIM) == 1)
 			eXit = 1;
 
-		printf("%d\n", access(cmdS[0], X_OK));
 		spoon(inPut, cmdS[0], cmdS, argv[0]);
 
 		freecmdS(cmdS);
