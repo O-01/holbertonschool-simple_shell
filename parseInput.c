@@ -10,17 +10,20 @@
 
 int parseInput(char *inPut, char *cmdS[], char *delim)
 {
-	int iter = 0;
+	int iter = 0, eXit = 0;
 	char *cmdT = NULL, *dup = NULL;
 
 	for (dup = inPut, iter = 0; (cmdT = goFission(&dup, delim)); iter++)
+	{
 		cmdS[iter] = cmdT;
-
+		if (iter > 0 && strcmp("exit", cmdS[iter]) == 0)
+			cmdS[iter] = NULL, eXit = 1;
+	}
 	if (cmdT != NULL)
 		cmdT = NULL;
 
 	if (dup != NULL)
 		free(dup), dup = NULL;
 
-	return (*cmdS ? 0 : -1);
+	return (eXit == 1 ? 1 : 0);
 }

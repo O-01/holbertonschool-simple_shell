@@ -9,7 +9,7 @@ int main(void)
 {
 	char *inPut = NULL;
 	size_t inputLen = 0;
-	int prmptChk = 0;
+	int prmptChk = 0, eXit = 0;
 	char *cmdS[MAX_LEN] = { NULL };
 
 	while (1)
@@ -28,7 +28,8 @@ int main(void)
 			continue;
 		}
 
-		parseInput(inPut, cmdS, SPC_DELIM);
+		if (parseInput(inPut, cmdS, SPC_DELIM) == 1)
+			eXit = 1;
 
 		spoon(inPut, cmdS[0], cmdS);
 
@@ -38,6 +39,9 @@ int main(void)
 			free(inPut), inPut = NULL;
 
 		fflush(stdout);
+
+		if (eXit == 1)
+			exit(2);
 	}
 	return (0);
 }

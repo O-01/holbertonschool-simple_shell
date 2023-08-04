@@ -12,13 +12,13 @@
 int spoon(char *input, char *cmd, char **argv)
 {
 	int iter = 0, flag = 0;
-	char **feedCMD = NULL;
+	char **feeD = NULL;
 
 	if (builtIn(cmd, argv[1], input, argv) == 1)
 		return (1);
 	if (fileExist(cmd) == 0)
 	{
-		if (access(cmd, X_OK) == 0)
+		if (access(cmd, F_OK) == 0)
 			forkExec(input, cmd, argv);
 		else
 		{
@@ -29,23 +29,26 @@ int spoon(char *input, char *cmd, char **argv)
 	}
 	else
 	{
-		feedCMD = obtainPath(cmd);
-		if (!feedCMD && isatty(STDIN_FILENO) == 0)
+		feeD = obtainPath(cmd);
+		if (!feeD && isatty(STDIN_FILENO) == 0)
 			perror(cmd), exit(127);
-		else if (!feedCMD)
+		else if (!feeD)
 			return (-1);
-		for (iter = 0; feedCMD[iter]; iter++)
-			if (fileExist(feedCMD[iter]) == 0 &&
-			    access(feedCMD[iter], X_OK) == 0)
-			{
-				forkExec(input, feedCMD[iter], argv), flag = 1;
+		for (iter = 0; feeD[iter]; iter++)
+			if (fileExist(feeD[iter]) == 0 &&
+			    access(feeD[iter], F_OK) == 0)
+			{forkExec(input, feeD[iter], argv), flag = 1;
 				break;
 			}
-		for (iter = 0; feedCMD[iter]; iter++)
-			free(feedCMD[iter]), feedCMD[iter] = NULL;
-		free(feedCMD);
+		for (iter = 0; feeD[iter]; iter++)
+			free(feeD[iter]), feeD[iter] = NULL;
+		free(feeD);
 		if (flag == 0)
+		{
 			perror(cmd);
+			if (isatty(STDIN_FILENO) == 0)
+				exit(127);
+		}
 	}
 	return (0);
 }

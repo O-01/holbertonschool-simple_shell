@@ -9,6 +9,7 @@ void __attribute__ ((constructor)) coolIntro(void)
 	int fileDesc = 0;
 	char *buffer;
 	ssize_t fileContent = 0, outPut;
+	time_t iTime = time(NULL);
 
 	fprintf(stderr, "\033[3J\033[H\033[2J");
 
@@ -35,4 +36,6 @@ void __attribute__ ((constructor)) coolIntro(void)
 
 	sleep(3);
 	fprintf(stdout, "\033[3J\033[H\033[2J");
+
+	fprintf(stdout, "WELCOME ~ %s\n", asctime(gmtime(&iTime)));
 }
