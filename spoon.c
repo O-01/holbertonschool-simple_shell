@@ -31,8 +31,6 @@ int spoon(char *input, char *cmd, char **argv, char *prog)
 	else
 	{
 		feeD = obtainPath(cmd);
-		if (!feeD && isatty(STDIN_FILENO) == 0)
-			perror(cmd), exit(127);
 		if (!feeD)
 			eX127(cmd, prog, input);
 		for (iter = 0; feeD[iter]; iter++)
