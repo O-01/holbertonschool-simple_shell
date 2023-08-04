@@ -5,15 +5,16 @@
  * @input: command
  * @cmd: command name used for error messages
  * @argv: arguments to the command
+ * Return: 1 upon success, -1 if input or cmd NULL
  */
 
-void forkExec(char *input, char *cmd, char **argv)
+int forkExec(char *input, char *cmd, char **argv)
 {
 	pid_t launch = 0;
 	int status = 0;
 
 	if (!input || !argv)
-		return;
+		return (-1);
 
 	launch = fork();
 
@@ -26,4 +27,6 @@ void forkExec(char *input, char *cmd, char **argv)
 	}
 	else
 		wait(&status);
+
+	return (1);
 }

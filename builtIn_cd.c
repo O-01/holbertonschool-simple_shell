@@ -18,8 +18,9 @@ int builtIn_cd(char *path, char *input, char __attribute__((unused)) **argv)
 	if (!path)
 		path = getenvY("HOME");
 
-	if (strcmp(path, "-") == 0/* && getenvY("OLDPWD"*) != NULL*/)
-		/*path = getenvY("OLDPWD"), */printf("%s\n", getenvY("OLDPWD"));
+	/* WIP */
+	if (strcmp(path, "-") == 0)
+		printf("%s\n", getenvY("OLDPWD"));
 
 	return (chdir(path));
 }

@@ -37,7 +37,7 @@ ssize_t lePrompt(const char *, char **, size_t *);
 void signalThing(int);
 int fileExist(char *);
 char *goFission(char **, char *delim);
-void forkExec(char *, char *, char **);
+int forkExec(char *, char *, char **);
 void freecmdS(char **);
 int emptyInput(char *);
 int parseInput(char *inPut, char *cmdS[], char *delim);

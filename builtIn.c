@@ -15,7 +15,7 @@ int builtIn(char *cmdS, char *arg, char *input, char **argv)
 		{"cd", builtIn_cd},
 		{"env", builtIn_env},
 		{"exit", builtIn_exit},
-		{"help", NULL},
+/*	WIP	{"help", NULL},*/
 		{NULL, NULL}
 	};
 	int iter = 0, size = 0;
