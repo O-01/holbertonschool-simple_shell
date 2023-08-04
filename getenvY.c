@@ -14,7 +14,7 @@ char *getenvY(char *varNam)
 	char *enVal = NULL;
 	char *choP[MAX_LEN] = { NULL };
 
-	if (!varNam || !environ)
+	if (!varNam)
 		return (NULL);
 	eVar = str_concat(varNam, "=");
 	for (iter = 0, varLen = strlen(varNam) + 1; environ[iter]; iter++)

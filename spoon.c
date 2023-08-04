@@ -20,10 +20,10 @@ int spoon(char *input, char *cmd, char **argv, char *prog)
 	if (access(cmd, X_OK) == -1)
 	{
 		feeD = obtainPath(cmd);
-		if (!feeD)
+		if (feeD == NULL)
 			eX127(cmd, prog, input);
 		for (iter = 0; feeD[iter]; iter++)
-			if (!access(feeD[iter], X_OK) && !querY(feeD[iter]))
+			if (!access(feeD[iter], X_OK))
 			{
 				forkExec(input, feeD[iter], argv), flag = 1;
 				break;
