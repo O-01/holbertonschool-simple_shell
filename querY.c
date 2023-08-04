@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * fileExist - checks if a file exists
+ * querY - checks if a file exists, command query
  * @cmd: file that needs to be checked
  * Return: The status of the requested file
  */
 
-int fileExist(char *cmd)
+int querY(char *cmd)
 {
 	struct stat buffer;
 

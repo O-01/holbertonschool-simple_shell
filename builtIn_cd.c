@@ -12,7 +12,7 @@ int builtIn_cd(char *path, char *input, char __attribute__((unused)) **argv)
 {
 	(void)input;
 
-	if (fileExist(path) == -1)
+	if (querY(path) == -1)
 		return (-1);
 
 	if (!path)

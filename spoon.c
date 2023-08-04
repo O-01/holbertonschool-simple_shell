@@ -17,15 +17,15 @@ int spoon(char *input, char *cmd, char **argv, char *prog)
 
 	if (builtIn(cmd, argv[1], input, argv) == 1)
 		return (1);
-	if (fileExist(cmd) == 0)
+	if (!querY(cmd))
 	{
-		if (access(cmd, F_OK) == 0)
+		if (!access(cmd, X_OK))
 			forkExec(input, cmd, argv);
 		else
 		{
 			perror(cmd);
 			if (isatty(STDIN_FILENO) == 0)
-				exit(13);
+				free(input), input = NULL, exit(13);
 		}
 	}
 	else
@@ -33,23 +33,19 @@ int spoon(char *input, char *cmd, char **argv, char *prog)
 		feeD = obtainPath(cmd);
 		if (!feeD && isatty(STDIN_FILENO) == 0)
 			perror(cmd), exit(127);
-		else if (!feeD)
-			return (-1);
+		if (!feeD)
+			ex127(cmd, prog, input);
 		for (iter = 0; feeD[iter]; iter++)
-			if (fileExist(feeD[iter]) == 0 &&
-			    access(feeD[iter], F_OK) == 0)
-			{forkExec(input, feeD[iter], argv), flag = 1;
+			if (!querY(feeD[iter]) && !access(feeD[iter], X_OK))
+			{
+				forkExec(input, feeD[iter], argv), flag = 1;
 				break;
 			}
 		for (iter = 0; feeD[iter]; iter++)
 			free(feeD[iter]), feeD[iter] = NULL;
 		free(feeD);
 		if (flag == 0)
-		{
-			eX127(cmd, prog);
-			if (isatty(STDIN_FILENO) == 0)
-				exit(127);
-		}
+			eX127(cmd, prog, input);
 	}
 	return (0);
 }
@@ -58,12 +54,16 @@ int spoon(char *input, char *cmd, char **argv, char *prog)
  * eX127 - prints error message to stderr for exit code 127
  * @cmd: command that is not found
  * @prog: name of program
+ * @input: input passed from main
  * Return: 0 upon success
  */
 
-int eX127(char *cmd, char *prog)
+int eX127(char *cmd, char *prog, char *input)
 {
 	fprintf(stderr, "%s: 1: %s: not found\n", prog, cmd);
+
+	if (isatty(STDIN_FILENO) == 0)
+		free(input), input = NULL, exit(127);
 
 	return (0);
 }

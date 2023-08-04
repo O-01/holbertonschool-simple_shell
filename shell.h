@@ -35,7 +35,7 @@ typedef struct builtIn
 void __attribute__ ((constructor)) coolIntro(void);
 ssize_t lePrompt(const char *, char **, size_t *);
 void signalThing(int);
-int fileExist(char *);
+int querY(char *);
 char *goFission(char **, char *delim);
 int forkExec(char *, char *, char **);
 void freecmdS(char **);
@@ -57,6 +57,6 @@ int builtIn_cd(char *, char *path, char **);
 int builtIn_exit(char *code, char *input, char **argv);
 
 /* Error handling */
-int eX127(char *cmd, char *prog);
+int eX127(char *cmd, char *prog, char *input);
 
 #endif
