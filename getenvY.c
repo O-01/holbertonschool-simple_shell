@@ -10,22 +10,28 @@ char *getenvY(char *varNam)
 {
 	int iter = 0, yes = 0;
 	size_t varLen = 0;
-	char *eVar = NULL, *graB = NULL, *enV = NULL, *enV1 = NULL;
-	char *enVal = NULL, *eq = "=";
+	char *eVar, *graB = NULL, *enV = NULL, *enV1 = NULL;
+	char *enVal = NULL;
 	char *choP[MAX_LEN] = { NULL };
 
 	if (!varNam)
 		return (NULL);
-	eVar = str_concat(varNam, eq);
+	eVar = str_concat(varNam, "=");
 	for (iter = 0, varLen = strlen(eVar); environ[iter]; iter++)
-		if (strncmp(eVar, environ[iter], varLen) == 0)
+		if (strncmp(environ[iter], eVar, varLen) == 0)
 		{
 			graB = environ[iter], yes = 1;
 			break;
 		}
 	if (yes == 1)
 	{
-		enV = malloc(sizeof(char) + MAX_LEN);
+		if (strlen(graB) == varLen)
+		{
+			free(eVar), eVar = NULL;
+			free(enV), enV = NULL, freecmdS(choP);
+			return (NULL);
+		}
+		enV = malloc(sizeof(char) * (strlen(graB) + 1));
 		if (!enV)
 			return (NULL);
 		strcpy(enV, graB), graB = NULL;
@@ -33,9 +39,7 @@ char *getenvY(char *varNam)
 		     (choP[iter] = goFission(&enV1, "=")) != NULL;
 		     iter++)
 			;
-		if (!strlen(choP[1]))
-			choP[1] = "";
-		enVal = malloc(sizeof(char) + MAX_LEN);
+		enVal = malloc(sizeof(char) * (strlen(choP[1]) + 1));
 		if (!enVal)
 			return (NULL);
 		strcpy(enVal, choP[1]);

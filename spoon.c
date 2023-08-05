@@ -11,20 +11,17 @@
 
 int spoon(char *input, char *cmd, char **argv)
 {
-	int iter = 0, flag = 0;
-	char **feeD = NULL, *check = NULL;
+	int iter = 0, flag = 0, hack = 0;
+	char **feeD = NULL;
 
+	hack = hacK();
 	if (builtIn(cmd, argv[1], input, argv) == 1)
 		return (1);
 	if (access(cmd, F_OK) == -1)
 	{
-		check = getenvY("PATH");
-		if (!check)
-		{
-			free(check), check = NULL;
+		if (hack == 1)
 			return (127);
-		}
-		feeD = obtainPath(cmd), free(check), check = NULL;
+		feeD = obtainPath(cmd);
 		if (!feeD)
 			return (127);
 		for (iter = 0; feeD[iter]; iter++)
@@ -42,7 +39,11 @@ int spoon(char *input, char *cmd, char **argv)
 	else
 	{
 		if (!access(cmd, X_OK))
+		{
+			if (hack == 1 && cmd[0] != '/')
+				return (127);
 			forkExec(input, cmd, argv);
+		}
 		else if (!access(cmd, F_OK) && access(cmd, X_OK) == -1)
 			return (13);
 		else

@@ -49,6 +49,7 @@ char **slashCMD(char **dest, char *cmdS);
 void *_calloc(size_t num, size_t size);
 char *getenvY(char *varName);
 int spoon(char *input, char *cmd, char **argv);
+int hacK(void);
 
 /* Built-in implementations */
 int builtIn(char *cmdS, char *arg, char *input, char **argv);
