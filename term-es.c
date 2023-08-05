@@ -11,12 +11,11 @@ int main(int __attribute__((unused)) argc, char **argv)
 {
 	char *inPut = NULL;
 	size_t inputLen = 0;
-	int prmptChk = 0, done = 0, eXit = 0;
+	int prmptChk = 0, done = 0;
 	char *cmdS[MAX_LEN] = { NULL };
 
 	while (1)
 	{
-		eXit = 0;
 		signal(SIGINT, signalThing);
 
 		prmptChk = lePrompt("# ", &inPut, &inputLen);
@@ -30,10 +29,9 @@ int main(int __attribute__((unused)) argc, char **argv)
 			continue;
 		}
 
-		if (parseInput(inPut, cmdS, SPC_DELIM) == 1)
-			eXit = 1;
+		parseInput(inPut, cmdS, SPC_DELIM);
 
-		done = spoon(inPut, cmdS[0], cmdS, eXit);
+		done = spoon(inPut, cmdS[0], cmdS);
 		if (done == 13)
 			eX13(cmdS[0], argv[0], inPut, cmdS);
 		if (done == 127)

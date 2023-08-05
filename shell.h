@@ -37,7 +37,7 @@ ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len);
 void signalThing(int sig);
 int querY(char *cmd);
 char *goFission(char **, char *delim);
-int forkExec(char *input, char *cmd, char **argv, int eXit);
+int forkExec(char *input, char *cmd, char **argv);
 void freecmdS(char **cmdS);
 int emptyInput(char *inPut);
 int parseInput(char *inPut, char *cmdS[], char *delim);
@@ -48,7 +48,7 @@ int memCalcPATH(char *patH, char *cmdS);
 char **slashCMD(char **dest, char *cmdS);
 void *_calloc(size_t num, size_t size);
 char *getenvY(char *varName);
-int spoon(char *input, char *cmd, char **argv, int eXit);
+int spoon(char *input, char *cmd, char **argv);
 int hacK(void);
 
 /* Built-in implementations */
