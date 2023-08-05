@@ -54,7 +54,7 @@ int hacK(void);
 /* Built-in implementations */
 int builtIn(char *cmdS, char *arg, char *input, char **argv);
 int builtIn_env(char *, char *, char **);
-int builtIn_cd(char *, char *path, char **);
+int builtIn_cd(char *path, char *, char **argv);
 int builtIn_exit(char *code, char *input, char **argv);
 
 /* Error handling */
