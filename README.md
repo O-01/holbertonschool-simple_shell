@@ -60,7 +60,7 @@ fileExist.c freeThings.c   hsh   lePrompt.c   parseInput.c   shell.h   TERM_ES.c
  * goFission - splits/tokenizes input string per delimiter(s)
  * @input: input
  * @delim: delimiter(s) by which input is to be divided
- * Return: next acceptable instance of input, NULL otherwise
+ * Return: tokenized segment from input string, NULL otherwise
  */
 
 char *goFission(char **input, char *delim)
@@ -110,26 +110,23 @@ Hey! Thanks for visiting our repository!
 #### For this example, we will use the command 'ls' and the option '-l'.
 ```
 # ls -l
-total 208
--rw-r--r-- 1 root root    119 Aug  2 09:51 AUTHORS
--rw-r--r-- 1 root root    331 Aug  2 09:51 builtIn_cd.c
--rw-r--r-- 1 root root    290 Aug  2 09:51 builtIn_env.c
--rw-r--r-- 1 root root    658 Aug  2 09:51 cool.Intro
--rw-r--r-- 1 root root    431 Aug  2 09:51 emptyInput.c
--rw-r--r-- 1 root root    235 Aug  2 09:51 fileExist.c
--rw-r--r-- 1 root root    437 Aug  2 09:51 forkExec.c
--rw-r--r-- 1 root root    265 Aug  2 09:51 freeThings.c
--rw-r--r-- 1 root root    363 Aug  2 09:51 goFission.c
--rwxr-xr-x 1 root root 134936 Aug  2 09:51 hsh
--rw-r--r-- 1 root root   7002 Aug  2 09:51 intro
--rw-r--r-- 1 root root    561 Aug  2 09:51 lePrompt.c
--rw-r--r-- 1 root root   4078 Aug  2 09:51 man_1_simple_shell
--rw-r--r-- 1 root root    679 Aug  2 09:51 parseInput.c
--rw-r--r-- 1 root root     33 Aug  2 09:51 README.md
--rw-r--r-- 1 root root   1069 Aug  2 09:51 shell.h
--rw-r--r-- 1 root root    244 Aug  2 09:51 signalThing.c
--rw-r--r-- 1 root root    631 Aug  2 09:51 term-es.c
--rwxr-xr-x 1 root root     77 Aug  2 09:51 test
+total 340
+-rw-r--r-- 1 root root    119 Aug  1 12:40 AUTHORS
+-rw-r--r-- 1 root root    839 Aug  4 06:11 builtIn.c
+-rw-r--r-- 1 root root    748 Aug  5 04:53 builtIn_cd.c
+-rw-r--r-- 1 root root    449 Aug  3 20:42 builtIn_env.c
+-rw-r--r-- 1 root root    865 Aug  5 04:53 builtIn_exit.c
+-rw-r--r-- 1 root root    585 Aug  3 20:42 _calloc.c
+-rw-r--r-- 1 root root    748 Aug  4 06:11 cool.Intro
+-rw-r--r-- 1 root root    641 Aug  3 20:42 deColon.c
+-rw-r--r-- 1 root root    431 Aug  1 23:18 emptyInput.c
+-rw-r--r-- 1 root root    485 Aug  5 01:05 eX127.c
+-rw-r--r-- 1 root root    521 Aug  5 01:05 eX13.c
+-rw-r--r-- 1 root root    753 Aug  5 01:05 forkExec.c
+-rw-r--r-- 1 root root    265 Aug  1 23:18 freeThings.c
+-rw-r--r-- 1 root root   1184 Aug  5 01:05 getenvY.c
+-rw-r--r-- 1 root root    363 Aug  1 23:18 goFission.c
+. . .
 # 
 ```
 #### For this example, we'll use the 'cal' function (which prints a calendar to standard output) and we'll use the '-3' option.
@@ -178,7 +175,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 ##
 
 ## Compilation :hammer_and_wrench:
-### ***TERM_ES*** was programmed on Ubuntu 20.04 LTS machine using gcc options:
+### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS machine using gcc options:
 `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
 
 ## Authors/Contact info :phone: :mailbox:
