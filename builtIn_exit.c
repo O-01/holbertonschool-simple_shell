@@ -31,7 +31,9 @@ int builtIn_exit(char *code, char *input, char **cmdS)
 	}
 	if (yes == 1 || status < 0)
 	{
-		printf("./hsh: 1: %s: Illegal number: %s\n", cmdS[0], code);
+		fprintf(stderr,
+			"./hsh: 1: %s: Illegal number: %s\n",
+			cmdS[0], code);
 		freecmdS(cmdS);
 		if (input)
 			free(input);
