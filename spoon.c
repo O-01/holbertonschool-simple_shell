@@ -6,12 +6,13 @@
  * @input: CLI input
  * @cmd: the first element of input & command to be run, if possible
  * @argv: vector of arguments retrieved from input
+ * @eXit: exit flag received from main, to be passed to forkExec
  * Return: 0 upon success, 1 if built-in called, -1 upon error
  */
 
-int spoon(char *input, char *cmd, char **argv)
+int spoon(char *input, char *cmd, char **argv, int eXit)
 {
-	int iter = 0, flag = 0, hack = 0;
+	int i = 0, tag = 0, hack = 0;
 	char **feeD = NULL;
 
 	hack = hacK();
@@ -24,16 +25,16 @@ int spoon(char *input, char *cmd, char **argv)
 		feeD = obtainPath(cmd);
 		if (!feeD)
 			return (127);
-		for (iter = 0; feeD[iter]; iter++)
-			if (!access(feeD[iter], X_OK))
+		for (i = 0; feeD[i]; i++)
+			if (!access(feeD[i], X_OK))
 			{
-				forkExec(input, feeD[iter], argv), flag = 1;
+				forkExec(input, feeD[i], argv, eXit), tag = 1;
 				break;
 			}
-		for (iter = 0; feeD[iter]; iter++)
-			free(feeD[iter]), feeD[iter] = NULL;
+		for (i = 0; feeD[i]; i++)
+			free(feeD[i]), feeD[i] = NULL;
 		free(feeD);
-		if (flag == 0)
+		if (tag == 0)
 			return (127);
 	}
 	else
@@ -42,7 +43,7 @@ int spoon(char *input, char *cmd, char **argv)
 		{
 			if (hack == 1 && cmd[0] != '/')
 				return (127);
-			forkExec(input, cmd, argv);
+			forkExec(input, cmd, argv, eXit);
 		}
 		else if (!access(cmd, F_OK) && access(cmd, X_OK) == -1)
 			return (13);

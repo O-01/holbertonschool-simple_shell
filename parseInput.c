@@ -13,12 +13,16 @@ int parseInput(char *inPut, char *cmdS[], char *delim)
 	int iter = 0, eXit = 0;
 	char *cmdT = NULL, *dup = NULL;
 
+	if (!inPut || !delim)
+		return (-1);
+
 	for (dup = inPut, iter = 0; (cmdT = goFission(&dup, delim)); iter++)
 	{
 		cmdS[iter] = cmdT;
 		if (iter > 0 && !strcmp("exit", cmdS[iter]))
 			cmdS[iter] = NULL, eXit = 1;
 	}
+
 	if (cmdT != NULL)
 		cmdT = NULL;
 
