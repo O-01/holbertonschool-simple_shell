@@ -12,8 +12,16 @@ int builtIn_exit(char *code, char *input, char **cmdS)
 {
 	int status = 0, cod3 = 0, yes = 0, iter = 0;
 
+	if (!code)
+	{
+		freecmdS(cmdS);
+		if (input)
+			free(input);
+		exit(0);
+	}
 	if (code)
 	{
+		cod3 = atoi(code), status = cod3;
 		for (iter = 0; code[iter]; iter++)
 			if (code[iter] < '0' || code[iter] > '9')
 			{
@@ -21,7 +29,7 @@ int builtIn_exit(char *code, char *input, char **cmdS)
 				break;
 			}
 	}
-	if (yes == 1)
+	if (yes == 1 || status < 0)
 	{
 		printf("./hsh: 1: %s: Illegal number: %s\n", cmdS[0], code);
 		freecmdS(cmdS);
@@ -29,16 +37,6 @@ int builtIn_exit(char *code, char *input, char **cmdS)
 			free(input);
 		exit(2);
 	}
-	cod3 = atoi(code), status = cod3;
-	if (status < 0)
-	{
-		printf("./hsh: 1: %s: Illegal number: %d", cmdS[0], status);
-		freecmdS(cmdS);
-		if (input)
-			free(input);
-		exit(2);
-	}
-/* ^ Above redundant ? */
 	if (input)
 		free(input);
 	freecmdS(cmdS), exit(status);
