@@ -180,7 +180,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 
 ## Compilation :hammer_and_wrench:
 ### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS platform and may be compiled
-using the following gcc options:
+### using the following gcc options:
 `# gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
 ### The program may be launched using the following command:
 `# ./hsh`
