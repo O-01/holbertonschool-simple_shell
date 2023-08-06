@@ -5,7 +5,7 @@
  * @inPut: object string
  * @cmdS: destination string vector
  * @delim: delimiter to be fed to splitting/tokenizing function
- * Return: 0 if inPut parsed to cmdS, -1 otherwise
+ * Return: 1 if inPut parsed to cmdS, 0 if not, -1 otherwise
  */
 
 int parseInput(char *inPut, char *cmdS[], char *delim)

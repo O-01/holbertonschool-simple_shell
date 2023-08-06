@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _calloc - allocates memory for array of objects of specified size
+ * _calloc - allocs/initializes to 0, mem for array of objects of spec size
  * @num: array objects for which memory to be allocated
  * @size: size of each object
  * Return: pointer to allocated memory, NULL if either param is 0 or alloc fail

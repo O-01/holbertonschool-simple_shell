@@ -3,7 +3,7 @@
 /**
  * getenvY - custom getenv function
  * @varNam: name of environmental variable to be retrieved
- * Return: requested environmental variable
+ * Return: requested environmental variable value
  */
 
 char *getenvY(char *varNam)

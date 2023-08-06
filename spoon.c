@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * spoon - manages input cmd, filtering through builtIn & fileExist, then
+ * spoon - manages input cmd, filtering through builtIn & access, then
  * calling forkExec if file exists & can be accessed
  * @input: CLI input
  * @cmd: the first element of input & command to be run, if possible
  * @argv: vector of arguments retrieved from input
- * Return: 0 upon success, 1 if built-in called, -1 upon error
+ * Return: 0 success, 1 built-in called, otherwise respective err no.
  */
 
 int spoon(char *input, char *cmd, char **argv)

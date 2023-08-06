@@ -1,10 +1,11 @@
 #include "shell.h"
 
 /**
- * main - infinite loop for prompt
+ * main - infinite loop responsible for prompt, calling parse/launch functions,
+ * & error messages, if necessary
  * @argc: argument count, unused for now
  * @argv: vector of arguments passed on run
- * Return: Always 0
+ * Return: 0, always
  */
 
 int main(int __attribute__((unused)) argc, char **argv)

@@ -3,20 +3,20 @@
 
 TERM_ES is a command that reads lines from either a file or
 the terminal, interprets them, and generally executes other commands.
-It is the program that is running when a user logs into the system. TERM_ES implements a language that has flow control constructs, a macro facility that provides a variety of features in addition to data storage, along with history and line editing capabilities. It incorporates many features to aid interactive use and has the advantage that the interpretative language is common to both interactive and non-interactive use (shell scripts).  That is, commands can be typed directly to the running shell or can be put into a file and the file can be executed directly by TERM_ES.
+It is the program that is running when a user logs into the system. TERM_ES implements a language that has flow control constructs, a macro facility that provides a variety of features in addition to data storage, along with history and line editing capabilities. It incorporates many features to aid interactive use and has the advantage that the interpretative language is common to both interactive and non-interactive use (shell scripts). That is, commands can be typed directly to the running shell or can be put into a file and the file can be executed directly by TERM_ES.
 
 ## Description :writing_hand:
-This program simulates a command interpreter based in Unix and GNU/LINUX with its basic commands. TERM_ES is both an interactive command language and a scripting language. TERM_ES is used by the operating system to control the execution of the system using shell scripts. TERM_ES is not supposed to be an exact implementation of powershell, but can work with all basic functions.
+This program simulates a command interpreter based in UNIX and GNU/LINUX with its basic commands. TERM_ES is both an interactive command language and a scripting language. TERM_ES is used by the operating system to control the execution of the system using shell scripts. TERM_ES is not supposed to be an exact implementation of shell, but can work with all basic functions.
 
 ## Features :pushpin:
 
-- This program displays a prompt and wait for the user to type a command. A command line always ends with a new line (when the user push ENTER key).
+- This program displays a prompt and waits for the user to type a command. A command line always ends with a new line (when the user presses ENTER key).
 
 - The prompt is displayed again each time a command has been executed.
 
 - When the user enters exit, TERM_ES will end and returns the status 0.
 
-- The user could stop the program using Ctrl+D (end of file).
+- The user could stop the program using Ctrl+D (END OF FILE).
 
 - The shell handles command lines with arguments and pathways.
 
@@ -26,20 +26,23 @@ This program simulates a command interpreter based in Unix and GNU/LINUX with it
 
 - This program executes the most common shell commands included with arguments.
 
-- If an command cannot be found, It prints an error message and display the prompt again.
+- If a command cannot be found, It prints an error message and display the prompt again.
 
-- This Shell does not support wildcard characters such as ls *.c in parameters (or commands). 
+- This shell does not support wildcard characters such as ls *.c in parameters (or commands) at this time. 
 
-- This shell does support pipes, but doesn't support logical operators.
+- This shell doesn't support pipes or logical operators at this time.
 
-## Commands/Outputs examples :dart:
+## Command/Output examples :dart:
 
 ##### ls - Function that lists all files in current working directory.
 ```
 # ls
-AUTHORS   builtIn_env.c   emptyInput.c   forkExec.c   goFission.c   intro   
-man_1_simple_shell   README.md  signalThing.c   test   builtIn_cd.c   cool.Intro 
-fileExist.c freeThings.c   hsh   lePrompt.c   parseInput.c   shell.h   TERM_ES.c
+AUTHORS         cool.Intro    getenvY.c           memCalcPATH.c  signalThing.c
+builtIn.c       deColon.c     goFission.c         obtainPath.c   slashCMD.c
+builtIn_cd.c    emptyInput.c  hsh                 parseInput.c   spoon.c
+builtIn_env.c   eX127.c       intro               querY.c        str_concat.c
+builtIn_exit.c  forkExec.c    lePrompt.c          README.md      term-es.c
+_calloc.c       freeThings.c  man_1_simple_shell  shell.h        test
 #
 ```
 ##### ps - Function that takes a snapshot of the current processes.
@@ -51,7 +54,7 @@ fileExist.c freeThings.c   hsh   lePrompt.c   parseInput.c   shell.h   TERM_ES.c
 29573 pts/23   00:00:00 ps
 #
 ```
-##### cat - Function that concatenates files and print on the standard output.
+##### cat - Function that concatenates files and prints on the standard output.
 ```
 # cat goFission.c
 #include "shell.h"
@@ -144,30 +147,31 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 # 
 ```
 ## Created/used functions :blue_book:
-
-- `builtIn_env` - Prints environmental variables.
-- `builtIn` - Manages built-in functions & calls them upon matching input.
-- `emptyInput` - Scans if input contains only whitespaces.
-- `forkExec` - Launches input command with its arguments.
-- `goFission` - Splits/tokenizes input string per delimiter(s).
-- `signalThing` - Checks for EOF/SIGINT and exits terminal.
-- `builtIn_cd` - Changes current working directory.
-- `querY` - Checks if targeted file exists.
-- `freecmdS` - Frees memory related to 'cmdS' in main.
-- `builtIn_exit` - Built-in provision for terminal exit upon command.
-- `lePrompt` - Gets line from input and maintains prompt.
-- `parseInput` - Parses/tokenizes input into string vector.
-- `obtainPath` - Processes PATH env variable for stat/access.
-- `str_concat` - Concatenates two given strings.
 - `addHistory` - Stores all inputs from stdin to a list.
-- `_calloc` - Allocates memory for array of objects of specified size.
+- `_atoi` - Converts string to integer.
+- `builtIn` - Manages built-in functions & calls them upon matching input.
+- `builtIn_cd` - Changes current working directory.
+- `builtIn_env` - Prints environmental variables.
+- `builtIn_exit` - Built-in provision for terminal exit upon command.
+- `_calloc` - Allocs/initializes to 0, mem for array of objects of spec size.
 - `deColon` - Divides input string into several based on colons present.
+- `emptyInput` - Scans if input contains only whitespaces.
 - `eX127` - Prints error message to stderr for exit code 127.
+- `eX13` - Prints error message to stderr for exit code 13.
+- `forkExec` - Launches input command with its arguments.
+- `freecmdS` - Frees memory related to 'cmdS' in main.
 - `getenvY` - Custom getenv function.
-- `mamCalcPATH` - Calculates memory to be allocated when handling PATH.
-- `slashCMD` - Concatenates slash + cmdS to all strings in a vector.
-- `spoon` - Manages input cmd, filtering through builtIn & querY.
-
+- `goFission` - Splits/tokenizes input string per delimiter(s).
+- `hacK` - Checks status of PATH & PWD environmental variables.
+- `lePrompt` - Gets line from input and maintains prompt.
+- `memCalcPATH` - Calculates memory to be allocated when handling PATH.
+- `obtainPath` - Processes PATH environmental variable for stat/access.
+- `parseInput` - Parses/tokenizes input into string vector.
+- `querY` - Checks if targeted file exists.
+- `signalThing` - Defines behavior upon SIGINT, to be fed to signal.
+- `slashCMD` - Concatenates slash + command to all strings in a vector.
+- `spoon` - Manages cmd, filters by builtIn/access, then forkExecs or returns error.
+- `str_concat` - Concatenates two given strings.
 
 ## FLOWCHART :chart_with_upwards_trend:
 ![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/589cd272-daba-4e13-b833-eae607e30767)
@@ -175,8 +179,11 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 ##
 
 ## Compilation :hammer_and_wrench:
-### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS machine using gcc options:
-`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
+### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS platform and may be compiled
+using the following gcc options:
+`# gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
+### The program may be launched using the following command:
+`# ./hsh`
 
 ## Authors/Contact info :phone: :mailbox:
 * **Eric Dzyk** **|** [Github](https://github.com/ericpo1sh) **|** [LinkedIn](https://linkedin.com/in/eric-dzyk-1b8976213) **|** [Email](mailto:ericpo1sh@gmail.com)  

@@ -3,7 +3,8 @@
 /**
  * obtainPath - processes PATH env var for stat/access use
  * @cmdS: command to be appended with slash to individual PATH directories
- * Return: 0 upon success, -1 upon malloc failure
+ * Return: processed PATH elements for use in spoon function, NULL upon malloc
+ * failure, input vector unavailable, or PATH variable empty/unaccessible
  */
 
 char **obtainPath(char *cmdS)

@@ -5,7 +5,7 @@
  * @arg: unused argument
  * @input: unused argument
  * @argv: unused argument
- * Return: 0 upon success, -1 otherwise
+ * Return: 0 upon success, -1 otherwise or if env vars N/A
  */
 
 int builtIn_env(char *arg, char *input, char __attribute__((unused)) **argv)

@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * signalThing - checks for SIGINT
+ * signalThing - defines behavior upon SIGINT, to be fed to signal
  * @sig: signal
  */
 
