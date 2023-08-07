@@ -4,7 +4,7 @@
  * slashCMD - concatenates slash + cmdS to all strings in a vector
  * @dest: input vector, to all elements of which slash + cmdS to be appended
  * @cmdS: command from main
- * Return: 0 upon success
+ * Return: strings concatenated with slash followed by input cmd
  */
 
 char **slashCMD(char **dest, char *cmdS)

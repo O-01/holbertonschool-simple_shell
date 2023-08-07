@@ -34,31 +34,42 @@ typedef struct builtIn
 
 void __attribute__ ((constructor)) coolIntro(void);
 ssize_t lePrompt(const char *prmptStyle, char **inPut, size_t *len);
-void signalThing(int sig);
-int querY(char *cmd);
-char *goFission(char **, char *delim);
-int forkExec(char *input, char *cmd, char **argv);
-void freecmdS(char **cmdS);
+
+/* Input verification / processing tools */
 int emptyInput(char *inPut);
+char *goFission(char **, char *delim);
 int parseInput(char *inPut, char *cmdS[], char *delim);
-char **obtainPath(char *cmdS);
-char **deColon(char *src, char *chop);
-char *str_concat(char *dest, char *src);
-int memCalcPATH(char *patH, char *cmdS);
+int querY(char *cmd);
+void signalThing(int sig);
 char **slashCMD(char **dest, char *cmdS);
-void *_calloc(size_t num, size_t size);
+
+/* Environmental variable verification / processing */
+char **deColon(char *src, char *chop);
 char *getenvY(char *varName);
-int spoon(char *input, char *cmd, char **argv);
 int hacK(void);
+char **obtainPath(char *cmdS);
+
+/* Exec / process management */
+int forkExec(char *input, char *cmd, char **argv);
+int spoon(char *input, char *cmd, char **argv);
+
+/* Memory-related functions */
+void *_calloc(size_t num, size_t size);
+int memCalcPATH(char *patH, char *cmdS);
+void freecmdS(char **cmdS);
 
 /* Built-in implementations */
 int builtIn(char *cmdS, char *arg, char *input, char **argv);
-int builtIn_env(char *, char *, char **);
 int builtIn_cd(char *path, char *, char **argv);
+int builtIn_env(char *, char *, char **);
 int builtIn_exit(char *code, char *input, char **argv);
 
 /* Error handling */
-int eX13(char *cmd, char *prog, char *input, char **cmdS);
 int eX127(char *cmd, char *prog, char *input, char **cmdS);
+int eX13(char *cmd, char *prog, char *input, char **cmdS);
+
+/* String helpers */
+int _atoi(char *inS);
+char *str_concat(char *dest, char *src);
 
 #endif

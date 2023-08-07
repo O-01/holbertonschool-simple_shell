@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * eX13 - prints error message to stderr for exit code 127
- * @cmd: command that is not found
+ * eX13 - prints error message to stderr for exit code 13
+ * @cmd: command that is denied permission
  * @prog: name of program
  * @input: input passed from main
  * @cmdS: argument vector of tokenized strings from input
- * Return: 0 upon success
+ * Return: 0 if exit failed
  */
 
 int eX13(char *cmd, char *prog, char *input, char **cmdS)

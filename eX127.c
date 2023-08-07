@@ -6,7 +6,7 @@
  * @prog: name of program
  * @input: input passed from main
  * @cmdS: argument vector of tokenized strings from input
- * Return: 0 upon success
+ * Return: 0 if exit failed
  */
 
 int eX127(char *cmd, char *prog, char *input, char **cmdS)

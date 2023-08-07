@@ -21,7 +21,7 @@ int builtIn_exit(char *code, char *input, char **cmdS)
 	}
 	if (code)
 	{
-		cod3 = atoi(code), status = cod3;
+		cod3 = _atoi(code), status = cod3;
 		for (iter = 0; code[iter]; iter++)
 			if (code[iter] < '0' || code[iter] > '9')
 			{
