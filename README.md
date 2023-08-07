@@ -33,9 +33,20 @@ This program simulates a command interpreter based in UNIX and GNU/LINUX with it
 - This shell doesn't support logical operators at this time.
 
 ## Compilation :hammer_and_wrench:
-### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS platform.
-### ***TERM_ES*** may be compiled using the following gcc options:
+### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS platform compiled using the following gcc options:
 `# gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
+
+## Getting started! :rocket:
+### To download ***TERM_ES***, Click on the following link!
+mtcars %>%
+  https://github.com/O-01/holbertonschool-simple_shell/releases/tag/v0.4.2(
+    output_name = "mtcars dataset",
+    output_extension = ".csv",
+    button_label = "Download TERM_ES",
+    button_type = "success",
+    has_icon = TRUE,
+    icon = "fa fa-save"
+  )
 ### The program may be launched using the following command:
 `# ./hsh`
 
