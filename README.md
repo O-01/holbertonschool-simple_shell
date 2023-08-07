@@ -1,4 +1,6 @@
-# *TERM_ES* - A SimpleShell Implementation
+<p align="center">
+<img src="https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/40192a37-7134-4a26-be05-ed76ac03a92b"/>
+
 ## Introduction :wave:
 
 TERM_ES is a command that reads lines from either a file or
