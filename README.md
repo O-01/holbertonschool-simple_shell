@@ -174,10 +174,16 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 - `str_concat` - Concatenates two given strings.
 
 ## Existing functons used :scroll:
-- `access` - check user's permissions for a file.
-- `chdir` - change working directory.
-- `execve` - execute program.
-- `exit` - cause the shell to exit.
+- `access` - Check user's permissions for a file.
+- `chdir` - Change working directory.
+- `execve` - Execute program.
+- `exit` - Cause the shell to exit.
+- `_exit` - Terminate the calling process.
+- `fflush` - Flush a stream.
+- `fork` - Create a child process.
+- `fprintf` - Function shall place output on the named output stream.
+- `free` - Display amount of free and used memory in the system.
+- `getline` - Deliminated string input.
 
 ## FLOWCHART :chart_with_upwards_trend:
 ![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/589cd272-daba-4e13-b833-eae607e30767)
