@@ -30,7 +30,7 @@ This program simulates a command interpreter based in UNIX and GNU/LINUX with it
 
 - This shell does not support wildcard characters such as ls *.c in parameters (or commands) at this time. 
 
-- This shell doesn't support pipes or logical operators at this time.
+- This shell doesn't support logical operators at this time.
 
 ## Command/Output examples :dart:
 
@@ -172,6 +172,12 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 - `slashCMD` - Concatenates slash + command to all strings in a vector.
 - `spoon` - Manages cmd, filters by builtIn/access, then forkExecs or returns error.
 - `str_concat` - Concatenates two given strings.
+
+## Existing functons used :scroll:
+- `access` - check user's permissions for a file.
+- `chdir` - change working directory.
+- `execve` - execute program.
+- `exit` - cause the shell to exit.
 
 ## FLOWCHART :chart_with_upwards_trend:
 ![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/589cd272-daba-4e13-b833-eae607e30767)
