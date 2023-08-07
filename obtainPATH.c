@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * obtainPath - processes PATH env var for stat/access use
+ * obtainPATH - processes PATH env var for stat/access use
  * @cmdS: command to be appended with slash to individual PATH directories
  * Return: processed PATH elements for use in spoon function, NULL upon malloc
  * failure, input vector unavailable, or PATH variable empty/unaccessible
  */
 
-char **obtainPath(char *cmdS)
+char **obtainPATH(char *cmdS)
 {
 	int mem = 0;
 	char *tehPath = NULL, *chop = NULL;

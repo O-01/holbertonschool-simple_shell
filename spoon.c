@@ -21,7 +21,7 @@ int spoon(char *input, char *cmd, char **argv)
 	{
 		if (hack == 1)
 			return (127);
-		feeD = obtainPath(cmd);
+		feeD = obtainPATH(cmd);
 		if (!feeD)
 			return (127);
 		for (iter = 0; feeD[iter]; iter++)

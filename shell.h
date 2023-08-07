@@ -47,7 +47,7 @@ char **slashCMD(char **dest, char *cmdS);
 char **deColon(char *src, char *chop);
 char *getenvY(char *varName);
 int hacK(void);
-char **obtainPath(char *cmdS);
+char **obtainPATH(char *cmdS);
 
 /* Exec / process management */
 int forkExec(char *input, char *cmd, char **argv);
