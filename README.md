@@ -32,7 +32,8 @@ This program simulates a command interpreter based in UNIX and GNU/LINUX with it
 
 - This shell doesn't support logical operators at this time.
 
-## Compilation :hammer_and_wrench:### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS platform and may be compiled *using the following gcc options:*
+## Compilation :hammer_and_wrench:
+### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS platform and may be compiled *using the following gcc options:*
 `# gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
 ### The program may be launched using the following command:
 `# ./hsh`
