@@ -93,7 +93,7 @@ char *goFission(char **input, char *delim)
 ##### cd - Function that changes the working directory.
 ```
 # ls
-addHistory.c                           holbertonschool-zero_day  push
+applestest.c                           holbertonschool-zero_day  push
 Betty                                  home                      root
 bin                                    lib                       run
 boot                                   lib32                     sbin
@@ -160,7 +160,6 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 # 
 ```
 ## Created/used functions :blue_book:
-- `addHistory` - Stores all inputs from stdin to a list.
 - `_atoi` - Converts string to integer.
 - `builtIn` - Manages built-in functions & calls them upon matching input.
 - `builtIn_cd` - Changes current working directory.
@@ -222,7 +221,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 
 ## Authors/Contact info :phone: :mailbox:
 * **Eric Dzyk** **|** [Github](https://github.com/ericpo1sh) **|** [LinkedIn](https://linkedin.com/in/eric-dzyk-1b8976213) **|** [Email](mailto:ericpo1sh@gmail.com)  
-* **Sammy Ansari** **|** [Github](https://github.com/O-01) **|** [LinkedIn](https://linkedin.com/sammy) **|** [Email](mailto:na.01goli@gmail.com)
+* **Sammy Ansari** **|** [Github](https://github.com/O-01) **|** [LinkedIn](https://linkedin.com/in/sam-ansari-579553287) **|** [Email](mailto:na.01goli@gmail.com)
 ##
 ![Holberton School - School of Computer Science and Programming](https://uploads-ssl.webflow.com/6105315644a26f77912a1ada/63eea844ae4e3022154e2878_Holberton.png)
 ##

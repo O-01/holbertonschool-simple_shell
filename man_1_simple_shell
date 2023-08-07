@@ -4,7 +4,7 @@
 
 .SH NAME
 
-\fBTERM_ES\fR - Simulates a Simple UNIX shell to handle multiple commands
+\fBTERM_ES\fR - Simulates a Simple UNIX shell to handle multiple commands.
 
 .SH SYNOPSIS
 
@@ -45,12 +45,12 @@ E.g. the shell can prompt the user to enter input.
 
 .B Non-interactive mode
 
-The shell will run from an automated process so it can't assume if can request input or that someone will see the output.
+The shell will run from an automated process so it can't assume that it can request input or that someone will see the output.
 
 
 .SH FEATURES
 
-* This program displays a prompt and wait for the user to type a command. A command line always ends with a new line (when the user push ENTER key).
+* This program displays a prompt and waits for the user to type a command. A command line always ends with a new line (when the user push ENTER key).
 
 * The prompt is displayed again each time a command has been executed.
 
@@ -58,7 +58,7 @@ The shell will run from an automated process so it can't assume if can request i
 
 * The user could stop the program using Ctrl+D (end of file).
 
-* The shell handles command lines with arguments and pathways.
+* The Shell handles command lines with arguments and pathways.
 
 * The program does not quit when the user inputs ^C (Ctrl+C).
 
@@ -66,13 +66,13 @@ The shell will run from an automated process so it can't assume if can request i
 
 * This program executes the most common shell commands included with arguments.
 
-* If an command cannot be found, It prints an error message and display the prompt again.
+* If a command cannot be found, it prints an error message and display the prompt again.
 
-* This Shell supports commentaries using #.
+* This Shell version does not support commentaries using #.
 
-* This Shell does not support wildcard characters such as ls *.c in parameters (or commands). 
+* This Shell version does not support wildcard characters such as ls *.c in parameters (or commands). 
 
-* This shell does NOT support pipes |, shell logical operators as && or ||, neither commands separator ;.
+* This Shell version does NOT support pipes |, shell logical operators as && or ||, neither commands separator ;.
 
 
 .SH COMMAND EXAMPLES AND OUTPUTS
