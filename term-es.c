@@ -20,7 +20,7 @@ int main(int __attribute__((unused)) argc, char **argv)
 
 		prmptChk = lePrompt("# ", &inPut, &inputLen);
 		if (prmptChk == -1)
-			free(inPut), exit(0);
+			free(inPut), printf("\n"), exit(0);
 		else if (prmptChk == 1)
 			continue;
 		if (emptyInput(inPut) == 0)
