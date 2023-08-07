@@ -184,6 +184,12 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 - `fprintf` - Function shall place output on the named output stream.
 - `free` - Display amount of free and used memory in the system.
 - `getline` - Deliminated string input.
+- `isatty` - Test whether a file descriptor refers to a terminal.
+- `malloc` - Allocates size bytes and returns a pointer to the allocated memory.
+- `perror` Display error message information.
+- `printf` - Formats and prints data.
+- `signal` - ANSI C signal handling.
+- `stat` - Display file or file system status.
 
 ## FLOWCHART :chart_with_upwards_trend:
 ![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/589cd272-daba-4e13-b833-eae607e30767)
