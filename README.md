@@ -32,6 +32,12 @@ This program simulates a command interpreter based in UNIX and GNU/LINUX with it
 
 - This shell doesn't support logical operators at this time.
 
+## Compilation :hammer_and_wrench:### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS platform and may be compiled *using the following gcc options:*
+`# gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
+### The program may be launched using the following command:
+`# ./hsh`
+
+
 ## Command/Output examples :dart:
 
 ##### ls - Function that lists all files in current working directory.
@@ -206,13 +212,6 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 ![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/589cd272-daba-4e13-b833-eae607e30767)
 
 ##
-
-## Compilation :hammer_and_wrench:
-### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS platform and may be compiled
-### using the following gcc options:
-`# gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
-### The program may be launched using the following command:
-`# ./hsh`
 
 ## Authors/Contact info :phone: :mailbox:
 * **Eric Dzyk** **|** [Github](https://github.com/ericpo1sh) **|** [LinkedIn](https://linkedin.com/in/eric-dzyk-1b8976213) **|** [Email](mailto:ericpo1sh@gmail.com)  
