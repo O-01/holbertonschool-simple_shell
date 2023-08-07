@@ -34,7 +34,7 @@ This program simulates a command interpreter based in UNIX and GNU/LINUX with it
 
 ## Compilation :hammer_and_wrench:
 ### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS platform.
-**TERM_ES may be compiled using the following gcc options:**
+### ***TERM_ES*** may be compiled using the following gcc options:
 `# gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
 ### The program may be launched using the following command:
 `# ./hsh`
