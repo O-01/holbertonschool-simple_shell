@@ -38,15 +38,9 @@ This program simulates a command interpreter based in UNIX and GNU/LINUX with it
 
 ## Getting started! :rocket:
 ### To download ***TERM_ES***, Click on the following link!
-mtcars %>%
-  https://github.com/O-01/holbertonschool-simple_shell/releases/tag/v0.4.2(
-    output_name = "mtcars dataset",
-    output_extension = ".csv",
-    button_label = "Download TERM_ES",
-    button_type = "success",
-    has_icon = TRUE,
-    icon = "fa fa-save"
-  )
+
+[![]https://www.pngarts.com/files/2/Download-Button-PNG-Picture.png)](https://github.com/O-01/holbertonschool-simple_shell/releases/tag/v0.4.2)
+
 ### The program may be launched using the following command:
 `# ./hsh`
 
