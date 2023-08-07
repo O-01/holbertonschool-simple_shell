@@ -37,9 +37,9 @@ This program simulates a command interpreter based in UNIX and GNU/LINUX with it
 `# gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
 
 ## Getting started! :rocket:
-### To download ***TERM_ES***, Click on the following link!
+### To download ***TERM_ES***, Click on the following button!
 
-[<img src="https://www.pngarts.com/files/2/Download-Button-PNG-Picture.png" width="100"/>](https://github.com/O-01/holbertonschool-simple_shell/releases/tag/v0.4.2)
+[<img src="https://www.pngkit.com/png/full/100-1009816_png-images-buttons-download-red-download-button-png.png" width="100"/>](https://github.com/O-01/holbertonschool-simple_shell/releases/tag/v0.4.2)
 
 ### The program may be launched using the following command:
 `# ./hsh`
