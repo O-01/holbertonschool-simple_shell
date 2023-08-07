@@ -39,7 +39,7 @@ This program simulates a command interpreter based in UNIX and GNU/LINUX with it
 ## Getting started! :rocket:
 ### To download ***TERM_ES***, Click on the following button!
 
-[<img src="https://static.vecteezy.com/system/resources/previews/009/341/992/original/simple-sign-download-icon-symbol-free-png.png" width="200"/>](https://github.com/O-01/holbertonschool-simple_shell/releases/tag/v0.4.2)
+[<img src="https://static.vecteezy.com/system/resources/previews/009/341/992/original/simple-sign-download-icon-symbol-free-png.png" width="150"/>](https://github.com/O-01/holbertonschool-simple_shell/releases/tag/v0.4.2)
 
 ### The program may be launched using the following command:
 `# ./hsh`
