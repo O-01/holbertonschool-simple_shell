@@ -215,7 +215,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 - `sleep` - Delay for a specified amount of time.
 
 ## FLOWCHART :chart_with_upwards_trend:
-![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/589cd272-daba-4e13-b833-eae607e30767)
+![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/83a88c11-8be5-46de-9445-c9a6495849f3)
 
 ##
 
