@@ -20,9 +20,9 @@ char **slashCMD(char **dest, char *cmdS)
 	if (!slasher)
 		return (NULL);
 
-	slashed = strcat(slash, cmdS);
+	slashed = strcat(slash, cmdS); /* concatenates '/' to command */
 	for (iter = 0; dest[iter]; iter++)
-	{
+	{ /* concatenates '/' + 'command' to parsed PATH directories */
 		patH = str_concat(dest[iter], slashed);
 		slasher[iter] = malloc(sizeof(char) * (strlen(patH) + 1));
 		if (slasher[iter] == NULL)
@@ -30,6 +30,5 @@ char **slashCMD(char **dest, char *cmdS)
 		strncpy(slasher[iter], patH, strlen(patH) + 1);
 		free(patH), patH = NULL;
 	}
-
 	return (slasher);
 }

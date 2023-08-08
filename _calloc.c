@@ -20,7 +20,7 @@ void *_calloc(size_t num, size_t size)
 
 	if (memSeg == NULL)
 		return (NULL);
-
+	/* memory allocated initialized to zero */
 	for (iter = 0, iniT = memSeg; iter != (size * num); iter++)
 		iniT[iter] = '\0';
 

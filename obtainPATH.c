@@ -16,15 +16,18 @@ char **obtainPATH(char *cmdS)
 	if (!cmdS)
 		return (NULL);
 
+	/* retrieve PATH environmental variable value */
 	tehPath = getenvY("PATH");
 	if (!tehPath)
 		return (NULL);
 
-	mem = memCalcPATH(tehPath, cmdS);
+	mem = memCalcPATH(tehPath, cmdS); /* necessary memory calculation */
 	chop = malloc(sizeof(char) * mem);
 	if (!chop)
 		return (NULL);
+	/* segment PATH by colons that separate the directories */
 	chopDir = deColon(tehPath, chop);
+	/* concatenate '/' + 'command' to each directory path */
 	outPut = slashCMD(chopDir, cmdS);
 
 	free(chopDir), free(chop), free(tehPath);

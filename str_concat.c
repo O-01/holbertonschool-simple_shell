@@ -22,13 +22,13 @@ char *str_concat(char *dest, char *src)
 	combo = malloc((sizeof(char) * destLen) + (sizeof(char) * srcLen));
 	if (combo == 0)
 		return (NULL);
-
-	for (; dest[dIter]; dIter++)
+	/* dIter / sIter = destination[iteration] / source[iteration] */
+	for (dIter = 0; dest[dIter]; dIter++)
 		combo[dIter] = dest[dIter];
-	for (; src[sIter]; dIter++, sIter++)
+	for (sIter = 0; src[sIter]; dIter++, sIter++)
 		combo[dIter] = src[sIter];
 
-	combo[dIter] = '\0';
+	combo[dIter] = '\0'; /* combo = src concatenated to dest */
 
 	return (combo);
 }

@@ -24,7 +24,7 @@ char **deColon(char *src, char *chop)
 	for (iter = 0, chop1 = chop;
 	     (chopDir[iter] = goFission(&chop1, ":"));
 	     iter++)
-		;
+		; /* parse PATH value segmented by colons */
 
 	return (chopDir);
 }

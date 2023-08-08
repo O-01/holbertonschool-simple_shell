@@ -1,6 +1,4 @@
-<p align="center">
-<img src="https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/40192a37-7134-4a26-be05-ed76ac03a92b"/>
-
+# *TERM_ES* - A SimpleShell Implementation
 ## Introduction :wave:
 
 TERM_ES is a command that reads lines from either a file or
@@ -26,23 +24,22 @@ This program simulates a command interpreter based in UNIX and GNU/LINUX with it
 
 - The program prints the current environment when the user types env.
 
-- This program executes the most common shell commands included with arguments.
+- This program executes the most common shell commands included along with their arguments.
 
-- If a command cannot be found, It prints an error message and display the prompt again.
+- If a command cannot be found, an error message will be printed and the prompt displays again.
 
 - This shell does not support wildcard characters such as ls *.c in parameters (or commands) at this time. 
 
-- This shell doesn't support logical operators at this time.
+- This shell does not support logical operators at this time.
 
 ## Compilation :hammer_and_wrench:
 ### ***TERM_ES*** was programmed on a Ubuntu 20.04 LTS platform compiled using the following gcc options:
 `# gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -ggdb3 *.c -o hsh`
 
 ## Getting started! :rocket:
-### To download the latest version of ***TERM_ES***, click on the button below!
+### To download the latest version of ***TERM_ES***, click on the following button!
 
-[<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/126730794/258942950-1c42caec-8cd3-4066-ab04-2a285c3e29ab.png" width="200"/>](https://github.com/O-01/holbertonschool-simple_shell/releases/tag/v0.4.2)
-
+[<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/126730794/258885974-5161a7ad-9d1b-400b-99f4-8a158ec546b2.png" width="200"/>](https://github.com/O-01/holbertonschool-simple_shell/releases/tag/v0.4.2)
 
 ### The program may be launched using the following command:
 `# ./hsh`
@@ -54,11 +51,11 @@ This program simulates a command interpreter based in UNIX and GNU/LINUX with it
 ```
 # ls
 AUTHORS         cool.Intro    getenvY.c           memCalcPATH.c  signalThing.c
-builtIn.c       deColon.c     goFission.c         obtainPath.c   slashCMD.c
+builtIn.c       deColon.c     goFission.c         obtainPATH.c   slashCMD.c
 builtIn_cd.c    emptyInput.c  hsh                 parseInput.c   spoon.c
 builtIn_env.c   eX127.c       intro               querY.c        str_concat.c
-builtIn_exit.c  forkExec.c    lePrompt.c          README.md      term-es.c
-_calloc.c       freeThings.c  man_1_simple_shell  shell.h        test
+builtIn_exit.c  forkExec.c    lePrompt.c          README.md      term_es.c
+_calloc.c       freecmdS.c  man_1_simple_shell  shell.h        test
 #
 ```
 ##### ps - Function that takes a snapshot of the current processes.
@@ -79,7 +76,7 @@ _calloc.c       freeThings.c  man_1_simple_shell  shell.h        test
  * goFission - splits/tokenizes input string per delimiter(s)
  * @input: input
  * @delim: delimiter(s) by which input is to be divided
- * Return: tokenized segment from input string, NULL otherwise
+ * Return: non-empty tokenized segment from input string, NULL otherwise
  */
 
 char *goFission(char **input, char *delim)
@@ -110,11 +107,11 @@ holbertonschool-simple_shell           proc
 # cd /holbertonschool-simple_shell
 # ls
 AUTHORS         cool.Intro    getenvY.c           memCalcPATH.c  signalThing.c
-builtIn.c       deColon.c     goFission.c         obtainPath.c   slashCMD.c
+builtIn.c       deColon.c     goFission.c         obtainPATH.c   slashCMD.c
 builtIn_cd.c    emptyInput.c  hsh                 parseInput.c   spoon.c
 builtIn_env.c   eX127.c       intro               querY.c        str_concat.c
-builtIn_exit.c  forkExec.c    lePrompt.c          README.md      term-es.c
-_calloc.c       freeThings.c  man_1_simple_shell  shell.h        test
+builtIn_exit.c  forkExec.c    lePrompt.c          README.md      term_es.c
+_calloc.c       freecmdS.c  man_1_simple_shell  shell.h        test
 #      
 ```
 
@@ -175,12 +172,12 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 - `eX13` - Prints error message to stderr for exit code 13.
 - `forkExec` - Launches input command with its arguments.
 - `freecmdS` - Frees memory related to 'cmdS' in main.
-- `getenvY` - Custom getenv function.
+- `getenvY` - Custom getenv function, retrieves environment variable value
 - `goFission` - Splits/tokenizes input string per delimiter(s).
 - `hacK` - Checks status of PATH & PWD environmental variables.
 - `lePrompt` - Gets line from input and maintains prompt.
 - `memCalcPATH` - Calculates memory to be allocated when handling PATH.
-- `obtainPath` - Processes PATH environmental variable for stat/access.
+- `obtainPATH` - Processes PATH environmental variable for stat/access.
 - `parseInput` - Parses/tokenizes input into string vector.
 - `querY` - Checks if targeted file exists.
 - `signalThing` - Defines behavior upon SIGINT, to be fed to signal.
@@ -194,7 +191,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 - `execve` - Execute program.
 - `exit` - Cause the shell to exit.
 - `_exit` - Terminate the calling process.
-- `fflush` - Flush a stream.
+- `fflush` - Flush a file/IO stream.
 - `fork` - Create a child process.
 - `fprintf` - Function shall place output on the named output stream.
 - `free` - Display amount of free and used memory in the system.
@@ -211,11 +208,6 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 - `strncmp` - Compares two strings to the specific byte.
 - `strsep` - Extract token from string.
 - `waitpid` - Wait for process to change state.
-- `write` - Send a message to another user.
-- `close` - Close a file descriptor.
-- `open` - Open and possibly create a file.
-- `read` - Read a line from standard input.
-- `sleep` - Delay for a specified amount of time.
 
 ## FLOWCHART :chart_with_upwards_trend:
 ![image](https://github.com/O-01/holbertonschool-simple_shell/assets/126730794/83a88c11-8be5-46de-9445-c9a6495849f3)

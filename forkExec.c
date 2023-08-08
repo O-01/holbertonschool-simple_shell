@@ -18,15 +18,15 @@ int forkExec(char *input, char *cmd, char **argv)
 
 	launch = fork();
 
-	if (launch == -1)
+	if (launch == -1) /* fork unsuccessful */
 		perror(cmd), exit(EXIT_FAILURE);
-	else if (launch == 0)
+	else if (launch == 0) /* fork successful */
 	{
-		if (execve(cmd, argv, environ) == -1)
+		if (execve(cmd, argv, environ) == -1) /* execute cmd w/ args */
 			perror(cmd), free(input), exit(EXIT_FAILURE);
 	}
 	else
-	{
+	{ /* wait for status change in child PID */
 		waitpid(launch, &status, 0);
 		flag = WEXITSTATUS(status);
 		if (flag == 2 && !isatty(STDIN_FILENO))

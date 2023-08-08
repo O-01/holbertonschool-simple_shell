@@ -20,12 +20,12 @@ int builtIn(char *cmdS, char *arg, char *input, char **argv)
 	};
 	int iter = 0, size = 0;
 
-	if (cmdS)
+	if (cmdS) /* command verified against built-in function calls */
 		for (iter = 0, size = (sizeof(bIn) / sizeof(bI_t));
 		     iter < (size - 1);
 		     iter++)
-			if (strcmp(bIn[iter].bIn_call, cmdS) == 0)
-			{
+			if (!strcmp(bIn[iter].bIn_call, cmdS))
+			{ /* corresponding function called upon match */
 				bIn[iter].bIn_fnc(arg, input, argv);
 				return (1);
 			}

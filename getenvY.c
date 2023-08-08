@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * getenvY - custom getenv function
+ * getenvY - custom getenv function, retrieves env var value
  * @varNam: name of environmental variable to be retrieved
  * Return: requested environmental variable value
  */
@@ -23,9 +23,9 @@ char *getenvY(char *varNam)
 			graB = environ[iter], yes = 1;
 			break;
 		}
-	if (yes == 1)
+	if (yes == 1) /* match found */
 	{
-		if (strlen(graB) == varLen)
+		if (strlen(graB) == varLen) /* value is empty */
 		{
 			free(eVar), eVar = NULL;
 			free(enV), enV = NULL, freecmdS(choP);
@@ -35,7 +35,7 @@ char *getenvY(char *varNam)
 		if (!enV)
 			return (NULL);
 		strcpy(enV, graB), graB = NULL;
-		for (iter = 0, enV1 = enV;
+		for (iter = 0, enV1 = enV; /* separate value from name */
 		     (choP[iter] = goFission(&enV1, "=")) != NULL;
 		     iter++)
 			;
@@ -46,6 +46,6 @@ char *getenvY(char *varNam)
 		free(eVar), eVar = NULL, free(enV), enV = NULL,	freecmdS(choP);
 		return (enVal);
 	}
-	free(eVar), eVar = NULL;
+	free(eVar), eVar = NULL; /* match not found */
 	return (NULL);
 }

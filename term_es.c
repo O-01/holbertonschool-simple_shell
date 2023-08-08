@@ -17,31 +17,34 @@ int main(int __attribute__((unused)) argc, char **argv)
 
 	while (1)
 	{
-		signal(SIGINT, signalThing);
+		signal(SIGINT, signalThing); /* provides response to ^C */
 
+		/* display prompt, getline operations */
 		prmptChk = lePrompt("# ", &inPut, &inputLen);
-		if (prmptChk == -1)
+		if (prmptChk == -1) /* upon EOF */
 			free(inPut), exit(0);
-		else if (prmptChk == 1)
+		else if (prmptChk == 1) /* input is single line break */
 			continue;
-		if (emptyInput(inPut) == 0)
+		if (!emptyInput(inPut)) /* input contains only whitespace */
 		{
 			free(inPut), inPut = NULL;
 			continue;
 		}
-
+		/* input processing */
 		parseInput(inPut, cmdS, SPC_DELIM);
 
+		/* parsed input vector verified for possible execution */
 		done = spoon(inPut, cmdS[0], cmdS);
-		if (done == 13)
+		if (done == 13) /* permission denied */
 			eX13(cmdS[0], argv[0], inPut, cmdS);
-		if (done == 127)
+		if (done == 127) /* file/command not found */
 			eX127(cmdS[0], argv[0], inPut, cmdS);
 
-		freecmdS(cmdS);
+		freecmdS(cmdS); /* free parsed input vector */
 		if (inPut != NULL)
 			free(inPut), inPut = NULL;
 
+		/* clear stdout buffer, displaying contents */
 		fflush(stdout);
 	}
 	return (0);
