@@ -34,7 +34,7 @@ void __attribute__ ((constructor)) coolIntro(void)
 	if (outPut != fileContent)
 		return;
 
-	sleep(3);
+	sleep(2);
 	fprintf(stdout, "\033[3J\033[H\033[2J");
 
 	fprintf(stdout, "WELCOME ~ %s\n", asctime(gmtime(&iTime)));
